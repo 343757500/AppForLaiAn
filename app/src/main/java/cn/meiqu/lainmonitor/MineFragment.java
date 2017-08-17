@@ -2,18 +2,15 @@ package cn.meiqu.lainmonitor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import cn.meiqu.baseproject.dao.SettingDao;
+import cn.meiqu.lainmonitor.activity.InformationChangeActivity;
 import cn.meiqu.lainmonitor.activity.SettingActivity;
-import cn.meiqu.lainmonitor.aui.system.FragmentModify;
 
 /**
  * Created by Administrator on 2017/5/25.
@@ -22,6 +19,10 @@ import cn.meiqu.lainmonitor.aui.system.FragmentModify;
 public class MineFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private TextView settingTv;
+    private TextView personalInfomation;
+    private TextView informationChange;
+    private TextView passwordChange;
 
     public MineFragment() {
     }
@@ -47,35 +48,51 @@ public class MineFragment extends Fragment {
          SettingDao.getInstance().setAccount(userName);
          SettingDao.getInstance().setPwd(password);
          */
-        TextView settingTv = (TextView) rootView.findViewById(R.id.setting_tv);
-        settingTv.setOnClickListener(new View.OnClickListener() {
+
+        personalInfomation = (TextView) rootView.findViewById(R.id.personal_information);
+        informationChange = (TextView) rootView.findViewById(R.id.information_change);
+        passwordChange = (TextView) rootView.findViewById(R.id.password_change);
+        settingTv = (TextView) rootView.findViewById(R.id.setting_tv);
+
+
+        initOnClickListener();
+        return rootView;
+    }
+
+    private void initOnClickListener() {
+        informationChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), SettingActivity.class));
+                startActivity(new Intent(getActivity(), InformationChangeActivity.class));
 
-//                SettingDao.getInstance().setIsLogin(0);
-//                SettingDao.getInstance().setAccount("");
-//                SettingDao.getInstance().setPwd("");
-//
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        getActivity().finish();
-//                        Toast.makeText(getActivity(),"已退出！",Toast.LENGTH_SHORT).show();
-//                    }
-//                },1000);
+            }
+        });
 
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.contain_id,new SettingFragment());
-//                transaction.addToBackStack(null);
-//                transaction.commit();
+        passwordChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+        personalInfomation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
 
             }
         });
 
 
-        return rootView;
+
+        settingTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+            }
+        });
+
     }
 
 

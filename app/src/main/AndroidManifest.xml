@@ -61,6 +61,8 @@
         <activity
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:name=".hkvideo.CameraPBActivity"/>
+
+        <activity android:name=".activity.InformationChangeActivity"></activity>
     </application>
 
 </manifest>

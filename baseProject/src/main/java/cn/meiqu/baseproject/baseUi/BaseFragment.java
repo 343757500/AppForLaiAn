@@ -213,7 +213,7 @@ public abstract class BaseFragment extends Fragment {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
+                String action = intent.getAction();
             String data = intent.getStringExtra("data");
             onHttpHandle(action, data);
         }
