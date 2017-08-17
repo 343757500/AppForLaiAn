@@ -34,6 +34,42 @@
         </LinearLayout>
 
         <LinearLayout
+            android:padding="3dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:text="          密码："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:password="true"
+                android:textSize="14sp"
+                android:background="@drawable/fill_border"
+                android:id="@+id/admin_password_ed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:padding="3dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="  确认密码："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:password="true"
+                android:textSize="14sp"
+                android:background="@drawable/fill_border"
+                android:id="@+id/admin_confirm_ed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

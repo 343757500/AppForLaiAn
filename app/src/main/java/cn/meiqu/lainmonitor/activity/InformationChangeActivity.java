@@ -1,9 +1,12 @@
 package cn.meiqu.lainmonitor.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -12,13 +15,16 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.baseUi.BaseActivity;
+import cn.meiqu.baseproject.dao.SettingDao;
+import cn.meiqu.baseproject.httpGet.HttpGetController;
 import cn.meiqu.lainmonitor.R;
 import cn.meiqu.lainmonitor.bean.AdminBean;
 
 /**
- * Created by Administrator on 2017/8/17.
+ * Created by zsp on 2017/8/17.  信息修改页面
  */
 
 public class InformationChangeActivity extends BaseActivity {
@@ -30,6 +36,10 @@ public class InformationChangeActivity extends BaseActivity {
     String action_update = className +API.updateLoginUserUrl;
 
 
+    @BindView(R.id.admin_password_ed)
+    EditText mPasswordEd;
+    @BindView(R.id.admin_confirm_ed)
+    EditText mPsConfirmEd;
     @BindView(R.id.admin_account_ed)
     EditText mAccountEd;
     @BindView(R.id.admin_email_ed)
@@ -71,6 +81,7 @@ public class InformationChangeActivity extends BaseActivity {
     CheckBox mCheck6;
     @BindView(R.id.day7)
     CheckBox mCheck7;
+    private ArrayList<AdminBean> temps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +111,12 @@ public class InformationChangeActivity extends BaseActivity {
 
 
     private void handleGetDate(String data){
-        ArrayList<AdminBean> temps = new Gson().fromJson(data,new TypeToken<ArrayList<AdminBean>>(){}.getType());
+        try {
+            temps = new Gson().fromJson(data,new TypeToken<ArrayList<AdminBean>>(){}.getType());
+        }catch (Exception e){
+            Toast.makeText(this,"密码已修改，请重新登录",Toast.LENGTH_SHORT).show();
+        }
+
         if(temps != null){
             mList.clear();
             mList.addAll(temps);
@@ -109,6 +125,7 @@ public class InformationChangeActivity extends BaseActivity {
                 mAccountEd.setText(bean.msg.name);
                 mEmailEd.setText(bean.msg.email);
                 mPhoneEd.setText(bean.msg.phoneNumber+"");
+                mPasswordEd.setText(bean.msg.password);
                 if(bean.msg.sex == 1){
                     sex = 1;
                     mManRa.setChecked(true);
@@ -166,5 +183,131 @@ public class InformationChangeActivity extends BaseActivity {
             }
 
         }
+    }
+
+
+    @OnClick({R.id.fb_modify,R.id.man_ra,R.id.femal_ra,R.id.super_ra,R.id.next_ra,R.id.nomal_ra,R.id.day1,R.id.day2,R.id.day3,
+            R.id.day4,R.id.day5,R.id.day6,R.id.day7})
+    public void onClick(View v){
+
+        switch (v.getId()){
+            case R.id.fb_modify:
+                //提交
+                if(!mPasswordEd.getText().toString().equals("") && !mPsConfirmEd.getText().toString().equals("")
+                        && !mPhoneEd.getText().toString().equals("")
+                        &&!mEmailEd.getText().toString().equals("")
+                        && !mAccountEd.getText().toString().equals("")){
+                    if(mPasswordEd.getText().toString().equals(mPsConfirmEd.getText().toString())){
+                        HttpGetController.getInstance().updateAdmin(className,bean.msg.id,mAccountEd.getText().toString(),
+                                mPasswordEd.getText().toString(),Long.parseLong(mPhoneEd.getText().toString()),mEmailEd.getText().toString(),sex,type,Mon,Tues,Wed,
+                                Thr,Fri,Sat,Sun);
+
+                        SettingDao.getInstance().setIsLogin(0);
+                        SettingDao.getInstance().setAccount("");
+                        SettingDao.getInstance().setPwd("");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                finish();
+                            }
+                        },3000);
+                        Toast.makeText(this,"信息已修改，即将退出",Toast.LENGTH_SHORT).show();
+                    }else{
+                        toast("两次密码输入不一致！");
+                    }
+                }
+                else{
+                    toast("输入不能为空！");
+                }
+                break;
+            case R.id.man_ra:
+                if(mManRa.isChecked()){
+                    sex = 1;
+                }
+                break;
+            case R.id.femal_ra:
+                if(mFemRa.isChecked()){
+                    sex = 2;
+                }
+                break;
+            case R.id.super_ra:
+                if(mSuperRa.isChecked()){
+                    type = 1;
+                }
+                break;
+            case R.id.next_ra:
+                if(mNextRa.isChecked()){
+                    type = 2;
+                }
+                break;
+            case R.id.nomal_ra:
+                if(mNormalRa.isChecked()){
+                    type = 3;
+                }
+                break;
+            case R.id.day1:
+                if(mCheck1.isChecked()){
+                    Mon = 1;
+                }else{
+                    Mon = 0;
+                }
+                break;
+            case R.id.day2:
+                if(mCheck2.isChecked()){
+                    Tues = 1;
+                }else{
+                    Tues = 0;
+                }
+                break;
+            case R.id.day3:
+                if(mCheck3.isChecked()){
+                    Wed = 1;
+                }else{
+                    Wed = 0;
+                }
+                break;
+            case R.id.day4:
+                if(mCheck4.isChecked()){
+                    Thr = 1;
+                }else{
+                    Thr = 0;
+                }
+                break;
+            case R.id.day5:
+                if(mCheck5.isChecked()){
+                    Fri = 1;
+                }else{
+                    Fri = 0;
+                }
+                break;
+            case R.id.day6:
+                if(mCheck6.isChecked()){
+                    Sat = 1;
+                }else{
+                    Sat = 0;
+                }
+                break;
+            case R.id.day7:
+                if(mCheck7.isChecked()){
+                    Sun = 1;
+                }else{
+                    Sun = 0;
+                }
+                break;
+        }
+    }
+
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestData(SettingDao.getInstance().getAccount(),SettingDao.getInstance().getPwd());
+    }
+
+    public void requestData(String userName, String password){
+        HttpGetController.getInstance().getAdminMessage(className,userName,password);
     }
 }

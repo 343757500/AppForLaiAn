@@ -198,14 +198,16 @@ public class FragmentModify extends BaseFragment {
                 if(!mPasswordEd.getText().toString().equals("") && !mPsConfirmEd.getText().toString().equals("")
                         && !mPhoneEd.getText().toString().equals("")
                         &&!mEmailEd.getText().toString().equals("")
-                        && !mAccountEd.getText().toString().equals(""))
-                if(mPasswordEd.getText().toString().equals(mPsConfirmEd.getText().toString())){
-                    HttpGetController.getInstance().updateAdmin(className,bean.msg.id,mAccountEd.getText().toString(),
-                            mPasswordEd.getText().toString(),Long.parseLong(mPhoneEd.getText().toString()),mEmailEd.getText().toString(),sex,type,Mon,Tues,Wed,
-                            Thr,Fri,Sat,Sun);
-                }else{
-                    toast(getActivity(),"两次密码输入不一致！");
-                }else{
+                        && !mAccountEd.getText().toString().equals("")){
+                    if(mPasswordEd.getText().toString().equals(mPsConfirmEd.getText().toString())){
+                        HttpGetController.getInstance().updateAdmin(className,bean.msg.id,mAccountEd.getText().toString(),
+                                mPasswordEd.getText().toString(),Long.parseLong(mPhoneEd.getText().toString()),mEmailEd.getText().toString(),sex,type,Mon,Tues,Wed,
+                                Thr,Fri,Sat,Sun);
+                    }else{
+                        toast(getActivity(),"两次密码输入不一致！");
+                    }
+                }
+               else{
                     toast(getActivity(),"输入不能为空！");
                 }
                 break;

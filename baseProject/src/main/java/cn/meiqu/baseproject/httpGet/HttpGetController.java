@@ -239,6 +239,10 @@ public class HttpGetController {
         get(API.updateLoginUserUrl,params.toString(),className);
     }
 
+
+
+
+
     //精密空调 -- 开
     public void openAir(String className,int id){
         StringBuilder params = new StringBuilder();
