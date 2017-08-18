@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import cn.meiqu.baseproject.dao.SettingDao;
 import cn.meiqu.lainmonitor.activity.InformationChangeActivity;
+import cn.meiqu.lainmonitor.activity.PersonalInfomationActivity;
 import cn.meiqu.lainmonitor.activity.SettingActivity;
 import mehdi.sakout.fancybuttons.FancyButton;
 
@@ -62,6 +63,16 @@ public class MineFragment extends Fragment {
     }
 
     private void initOnClickListener() {
+
+        personalInfomation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), PersonalInfomationActivity.class));
+
+            }
+        });
+
+
         informationChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,13 +89,7 @@ public class MineFragment extends Fragment {
             }
         });
 
-        personalInfomation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-            }
-        });
 
 
 
