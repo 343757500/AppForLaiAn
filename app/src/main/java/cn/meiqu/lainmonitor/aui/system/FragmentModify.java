@@ -1,6 +1,7 @@
 package cn.meiqu.lainmonitor.aui.system;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -203,14 +204,25 @@ public class FragmentModify extends BaseFragment {
                         HttpGetController.getInstance().updateAdmin(className,bean.msg.id,mAccountEd.getText().toString(),
                                 mPasswordEd.getText().toString(),Long.parseLong(mPhoneEd.getText().toString()),mEmailEd.getText().toString(),sex,type,Mon,Tues,Wed,
                                 Thr,Fri,Sat,Sun);
+
+                        SettingDao.getInstance().setIsLogin(0);
+                        SettingDao.getInstance().setAccount("");
+                        SettingDao.getInstance().setPwd("");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                getActivity().finish();
+                            }
+                        },3000);
+                        Toast.makeText(getActivity(),"信息已修改，即将退出",Toast.LENGTH_SHORT).show();
                     }else{
-                        toast(getActivity(),"两次密码输入不一致！");
+                        toast("两次密码输入不一致！");
                     }
                 }
-               else{
-                    toast(getActivity(),"输入不能为空！");
+                else{
+                    toast("输入不能为空！");
                 }
-                break;
             case R.id.man_ra:
                 if(mManRa.isChecked()){
                     sex = 1;
