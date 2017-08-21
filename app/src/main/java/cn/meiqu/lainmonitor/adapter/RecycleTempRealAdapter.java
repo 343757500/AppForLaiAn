@@ -74,7 +74,7 @@ public class RecycleTempRealAdapter extends BaseRecycleAdapter {
             mTvName.setText(tempReal.getEhmName() + "");
             mTvTemp.setText(tempReal.getEhmTemp() + "℃");
             mTvWet.setText(tempReal.getEhmHum() + "%");
-            if (tempReal.getEhmTemp() >= tempReal.getEhmMinTemp() && tempReal.getEhmTemp() <= tempReal.getEhmMaxTemp()) {
+            if (tempReal.getEhmTemp() >= tempReal.getEhmMinTemp() && tempReal.getEhmTemp() <=  tempReal.getEhmMaxTemp()) {
                 mTvTemp.setBackgroundColor(mTvTemp.getResources().getColor(R.color.colorPrimary));
             } else {
                 mTvTemp.setBackgroundColor(mTvTemp.getResources().getColor(R.color.red));

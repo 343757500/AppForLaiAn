@@ -40,26 +40,24 @@
         android:text="信息修改"
         />
 
-    <TextView
-        android:id="@+id/password_change"
-        style="@style/MineEdit"
-        android:text="密码修改"
-     />
 
-     <mehdi.sakout.fancybuttons.FancyButton
-         android:id="@+id/fb_logout"
-         android:background="@color/window_background"
-         android:layout_width="match_parent"
-         android:layout_height="45dp"
-         android:layout_marginTop="10dp"
-         android:layout_alignParentBottom="true"
-         app:fb_text="退出登录"
-         app:fb_textColor="@color/white"
-         app:fb_defaultColor="@color/color_red"
-         app:fb_focusColor="@color/color_backround"/>
+
+
 
  </LinearLayout>
 
+    <mehdi.sakout.fancybuttons.FancyButton
+
+        android:id="@+id/fb_logout"
+        android:background="@color/window_background"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        app:fb_text="退出登录"
+        app:fb_textColor="@color/white"
+        app:fb_defaultColor="@color/color_red"
+        app:fb_focusColor="@color/color_backround"/>
 
     <FrameLayout
         android:id="@+id/contain_id"

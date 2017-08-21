@@ -25,7 +25,6 @@ public class MineFragment extends Fragment {
     private FancyButton settingTv;
     private TextView personalInfomation;
     private TextView informationChange;
-    private TextView passwordChange;
 
     public MineFragment() {
     }
@@ -54,7 +53,6 @@ public class MineFragment extends Fragment {
 
         personalInfomation = (TextView) rootView.findViewById(R.id.personal_information);
         informationChange = (TextView) rootView.findViewById(R.id.information_change);
-        passwordChange = (TextView) rootView.findViewById(R.id.password_change);
         settingTv = (FancyButton) rootView.findViewById(R.id.fb_logout);
 
 
@@ -77,14 +75,6 @@ public class MineFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), InformationChangeActivity.class));
-
-            }
-        });
-
-        passwordChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
 
             }
         });
