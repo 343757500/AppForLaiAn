@@ -35,6 +35,8 @@
     <color name="ripple">#58FAAC</color>
     <color name="ll_listIP">#eeeeee</color>
     <color name="white">#ffffff</color>
+     <!-- 白灰色-->
+    <color name="white1">#e0e0e0</color>
     <!-- 粉色 -->
     <color name="selfe">#EEEEEE</color>
     <!-- 灰色 -->

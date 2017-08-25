@@ -4,12 +4,17 @@
     style="@style/activity_root"
     android:orientation="vertical">
 
-    <include layout="@layout/title" />
+
+
+
+
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/window_background">
+        android:background="@drawable/login_background2"
+
+        >
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -20,66 +25,81 @@
             android:paddingRight="40dp"
             android:paddingTop="90dp">
 
-            <LinearLayout
-                android:background="@drawable/fill_border"
-                android:layout_width="fill_parent"
+
+            <TextView
+                android:paddingTop="50dp"
+                android:text="机房监控系统"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                />
+
+            <LinearLayout
+                android:background="@drawable/edit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:paddingLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/i_login_account" />
+                    android:src="@mipmap/tubiao1" />
 
-                <TextView
+               <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="账号："
                     android:textColor="@color/black3"
-                    android:textSize="13dp" />
+                    android:textSize="13dp" />-->
 
                 <cn.meiqu.baseproject.view.ClearEditText
+
                     android:id="@+id/edt_uesrname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@null"
                     android:hint="请输入账号"
+                    android:paddingLeft="14dp"
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/black3"
-                    android:textColorHint="@color/black9"
+                    android:textColorHint="@color/white1"
                     android:textSize="13dp" />
             </LinearLayout>
 
-            <View
+          <!--  <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="#d9d9d9" />
+                android:background="#d9d9d9" />-->
 
             <LinearLayout
-                android:background="@drawable/fill_border"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:background="@drawable/edit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:paddingLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/i_login_pwd" />
+                    android:src="@mipmap/tubiao2" ></ImageView>
 
-                <TextView
+               <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="密码："
                     android:textColor="@color/black3"
-                    android:textSize="13dp" />
+                    android:textSize="13dp" />-->
 
                 <cn.meiqu.baseproject.view.ClearEditText
                     android:id="@+id/edt_pwd"
@@ -91,26 +111,28 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/black3"
-                    android:textColorHint="@color/black9"
+                    android:textColorHint="@color/white1"
+                    android:paddingLeft="14dp"
                     android:textSize="13dp" />
             </LinearLayout>
 
-            <View
+          <!--  <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="#d9d9d9" />
+                android:background="#d9d9d9" />-->
 
 
             <cn.meiqu.baseproject.view.RippleView
                 android:id="@+id/ripple_login"
                 android:layout_width="fill_parent"
+                android:background="@drawable/bt_login"
                 android:layout_height="40dp"
                 android:layout_marginTop="26dp">
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/bg_rect_round_coloraccent"
+
                     android:gravity="center"
                     android:text="登录"
                     android:textColor="@color/white"
@@ -125,7 +147,7 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:text="若登录一直不成功，请点击右下角图标"
-                android:textColor="@color/black9"
+                android:textColor="@color/white"
                 android:textSize="12dp" />
 
         </LinearLayout>

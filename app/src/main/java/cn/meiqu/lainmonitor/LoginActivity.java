@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     String className = getClass().getName();
     String action_login = className + API.login;
     private ClearEditText mEdtUesrname;
-    private ClearEditText mEdtPwd;
+    private EditText mEdtPwd;
     private TextView mTvPwdForget;
     private RippleView mRippleLogin;
     private FloatingActionButton mFab;
@@ -37,9 +38,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private CustomProgress customProgress;
 
     private void assignViews() {
-        initTitle("登录");
+        //initTitle("登录");
         mEdtUesrname = (ClearEditText) findViewById(R.id.edt_uesrname);
-        mEdtPwd = (ClearEditText) findViewById(R.id.edt_pwd);
+        mEdtPwd = (EditText) findViewById(R.id.edt_pwd);
         mTvPwdForget = (TextView) findViewById(R.id.tv_pwd_forget);
         mRippleLogin = (RippleView) findViewById(R.id.ripple_login);
         mFab = (FloatingActionButton) findViewById(R.id.fab);

@@ -85,7 +85,8 @@ public class ClearEditText extends EditText implements
     public void onFocusChange(View v, boolean hasFocus) {
         this.hasFoucs = hasFocus;
         if (hasFocus) {
-            setClearIconVisible(getText().length() > 0);
+            //setClearIconVisible(getText().length() > 0);
+            setClearIconVisible(false);
         } else {
             setClearIconVisible(false);
         }
@@ -110,7 +111,8 @@ public class ClearEditText extends EditText implements
     public void onTextChanged(CharSequence s, int start, int count,
                               int after) {
         if (hasFoucs) {
-            setClearIconVisible(s.length() > 0);
+            //setClearIconVisible(s.length() > 0);
+            setClearIconVisible(false);
         }
     }
 

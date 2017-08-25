@@ -117,6 +117,14 @@ public class FragmentEnv extends FragmentControl {
             if (thirdPages.size() >= 2)
                 fragments.add(new FragmentThunderAlart());
         }
+
+        //粉尘
+        else if (number2.equals("12")) {
+            if (thirdPages.size() >= 1)
+                fragments.add(new FragmentThunderReal());
+            if (thirdPages.size() >= 2)
+                fragments.add(new FragmentThunderAlart());
+        }
     }
 
     public void checkInput() {
