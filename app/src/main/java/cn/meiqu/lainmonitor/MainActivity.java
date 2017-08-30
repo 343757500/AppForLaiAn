@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,7 +29,8 @@ public class MainActivity extends AppCompatActivity{
 
     private String[] mTitles = {"主页","我的"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-
+    private TabLayout.Tab one;
+    private TabLayout.Tab two;
     //禁止滑动
     private NoScrollViewPager mViewPager;
     private TabLayout tabLayout;
@@ -52,8 +55,40 @@ public class MainActivity extends AppCompatActivity{
     private void setViewPager(){
         PagerHomeAdapter tabAdapter = new PagerHomeAdapter(getSupportFragmentManager(),mFragments,mTitles);
         mViewPager.setAdapter(tabAdapter);
-        tabLayout.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.color_green));//设置文本在选中和为选中时候的颜色
+        tabLayout.setTabTextColors(getResources().getColor(R.color.black3), getResources().getColor(R.color.white));//设置文本在选中和为选中时候的颜色
         tabLayout.setupWithViewPager(mViewPager);
+        one = tabLayout.getTabAt(0);
+        two = tabLayout.getTabAt(1);
+
+
+       /* tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab == tabLayout.getTabAt(0)) {
+                    one.setCustomView(getResources().getDrawable(R.mipmap.footer1));
+                    mViewPager.setCurrentItem(0);
+                } else if (tab == tabLayout.getTabAt(1)) {
+                    two.setIcon(getResources().getDrawable(R.mipmap.footer2));
+                    mViewPager.setCurrentItem(1);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+               *//* if (tab == tabLayout.getTabAt(0)) {
+                    Toast.makeText(getApplicationContext(),"11",Toast.LENGTH_SHORT).show();
+                } else if (tab == tabLayout.getTabAt(1)) {
+                   *//**//* two.setIcon(getResources().getDrawable(R.mipmap.footer2));
+                    mViewPager.setCurrentItem(1);*//**//*
+                    Toast.makeText(getApplicationContext(),"22",Toast.LENGTH_SHORT).show();
+                }*//*
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });*/
     }
 
 
@@ -70,6 +105,9 @@ public class MainActivity extends AppCompatActivity{
 
         mViewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout)findViewById(R.id.table);
+
+
+
 
     }
 
