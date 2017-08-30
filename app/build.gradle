@@ -37,4 +37,8 @@ dependencies {
     compile 'com.github.medyo:fancybuttons:1.8.2'
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //smarttablayout
+    //smarttablayout
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
 }

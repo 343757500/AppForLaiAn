@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/rl_main"
-    android:background="@color/black"
     style="@style/activity_root"
     tools:context=".MainActivity">
 
@@ -29,14 +28,14 @@
 
 
     <android.support.design.widget.TabLayout
-        android:background="@drawable/maintab_selector"
         android:layout_alignParentBottom="true"
         android:id="@+id/table"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        app:tabBackground="@drawable/maintab_selector">
+        app:tabBackground="@drawable/maintab_selector"
+        app:tabIndicatorColor="@null">
     </android.support.design.widget.TabLayout>
 
     </RelativeLayout>

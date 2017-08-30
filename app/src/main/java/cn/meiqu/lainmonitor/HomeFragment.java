@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class HomeFragment extends BaseFragment {
 
     String className = getClass().getName();
     String action_getHomePage = className + API.getHomePage;
-    private TabLayout mTabL;
+    private SmartTabLayout mTabL;
     private ViewPager mViewP;
     private PagerHomeAdapter adapter;
     private List<Fragment> fragments = new ArrayList<>();
@@ -112,20 +113,27 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void assignViews() {
-        mTabL = (TabLayout) homeView.findViewById(R.id.tabL);
+        mTabL = (SmartTabLayout) homeView.findViewById(R.id.tabL);
         mViewP = (ViewPager) homeView.findViewById(R.id.viewP);
     }
 
 
     private void initPager() {
-        adapter = new PagerHomeAdapter(getFragmentManager(), fragments, titles);
-        mViewP.setAdapter(adapter);
-        mTabL.setupWithViewPager(mViewP);
-        mTabL.setTabTextColors(getResources().getColor(R.color.color_green), getResources().getColor(R.color.colorAccent));//设置文本在选中和为选中时候的颜色
-        mTabL.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));//设置指示器的颜色
-        mTabL.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+
+        adapter = new PagerHomeAdapter(getChildFragmentManager(), fragments, titles);
+
         //初始化数据
         initData();
+
+        mViewP.setAdapter(adapter);
+      // mTabL.setupWithViewPager(mViewP);
+        //mTabL.setTabTextColors(getResources().getColor(R.color.color_green), getResources().getColor(R.color.colorAccent));//设置文本在选中和为选中时候的颜色
+        //mTabL.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));//设置指示器的颜色
+       // mTabL.setTabMode(TabLayout.MODE_SCROLLABLE);
+        mTabL.setViewPager(mViewP);
+
+
     }
 
 

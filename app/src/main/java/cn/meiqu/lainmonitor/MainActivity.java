@@ -57,38 +57,7 @@ public class MainActivity extends AppCompatActivity{
         mViewPager.setAdapter(tabAdapter);
         tabLayout.setTabTextColors(getResources().getColor(R.color.black3), getResources().getColor(R.color.white));//设置文本在选中和为选中时候的颜色
         tabLayout.setupWithViewPager(mViewPager);
-        one = tabLayout.getTabAt(0);
-        two = tabLayout.getTabAt(1);
 
-
-       /* tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab == tabLayout.getTabAt(0)) {
-                    one.setCustomView(getResources().getDrawable(R.mipmap.footer1));
-                    mViewPager.setCurrentItem(0);
-                } else if (tab == tabLayout.getTabAt(1)) {
-                    two.setIcon(getResources().getDrawable(R.mipmap.footer2));
-                    mViewPager.setCurrentItem(1);
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-               *//* if (tab == tabLayout.getTabAt(0)) {
-                    Toast.makeText(getApplicationContext(),"11",Toast.LENGTH_SHORT).show();
-                } else if (tab == tabLayout.getTabAt(1)) {
-                   *//**//* two.setIcon(getResources().getDrawable(R.mipmap.footer2));
-                    mViewPager.setCurrentItem(1);*//**//*
-                    Toast.makeText(getApplicationContext(),"22",Toast.LENGTH_SHORT).show();
-                }*//*
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });*/
     }
 
 
