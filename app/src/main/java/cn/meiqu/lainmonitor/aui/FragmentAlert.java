@@ -87,7 +87,6 @@ public abstract class FragmentAlert extends BaseFragment implements SwipeRefresh
         mRecycleV.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecycleV.setOnMoreListener(null);
         mRecycleV.setAdapter(getAdapter());
-
         //
 
     }

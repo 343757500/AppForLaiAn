@@ -46,6 +46,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleTempManageAdapter(getActivity(), Temps);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_top,null));
         return adapter;
     }
 
@@ -55,7 +56,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
         requestIps();
         viewGBody.getChildAt(0).setVisibility(View.GONE);
         mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_top, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_top1, null);
     }
 
     @Override

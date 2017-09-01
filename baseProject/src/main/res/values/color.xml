@@ -31,12 +31,16 @@
 
     <color name="color_maintitle">#10d6ae</color>
 
+    <color name="textcolor">#0fd6ad</color>
+
 
 
     <color name="div">#bbb</color>
     <color name="ripple">#58FAAC</color>
     <color name="ll_listIP">#eeeeee</color>
     <color name="white">#ffffff</color>
+
+    <color name="textbalckground">#d8572f</color>
      <!-- 白灰色-->
     <color name="white1">#e0e0e0</color>
     <!-- 粉色 -->

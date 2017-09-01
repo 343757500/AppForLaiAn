@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#778898" />   背景的颜色
+    <corners android:topLeftRadius="30px"
+        android:topRightRadius="30px"
+    android:bottomRightRadius="30px"
+    android:bottomLeftRadius="30px"/>    左下角的角度
+
+    <span style="font-family: Arial, Helvetica, sans-serif;">右上角的角度</span>
+</shape>

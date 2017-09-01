@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ import cn.meiqu.lainmonitor.bean.ThirdPage;
 public abstract class FragmentControl extends BaseFragment {
     String className = getClass().getName();
     String action_getPage = className + API.getHomeChildThirdPage;
-    public TabLayout mTabL;
+    public SmartTabLayout mTabL;
     private ViewPager mViewP;
     private PagerHomeAdapter adapter;
     public List<Fragment> fragments = new ArrayList<>();
@@ -37,20 +38,24 @@ public abstract class FragmentControl extends BaseFragment {
     String titles[] = new String[100];
     public static String number1 = "";
     public static String number2 = "";
+    private String data;
 
     private void assignViews() {
-        mTabL = (TabLayout) findViewById(R.id.tabL);
+        mTabL = (SmartTabLayout) findViewById(R.id.tabL);
         mViewP = (ViewPager) findViewById(R.id.viewP);
     }
 
     private void initPager() {
         //如果是fragment的嵌套的话，那么这里要采用getChildFragmentManager（）
         adapter = new PagerHomeAdapter(getChildFragmentManager(), fragments, titles);
+
+        initData(data);
         mViewP.setAdapter(adapter);
-        mTabL.setupWithViewPager(mViewP);
+       /* mTabL.setupWithViewPager(mViewP);
         mTabL.setTabTextColors(getResources().getColor(R.color.black3), getResources().getColor(R.color.colorAccent));//设置文本在选中和为选中时候的颜色
         mTabL.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));
-        mTabL.setTabMode(TabLayout.MODE_FIXED);
+        mTabL.setTabMode(TabLayout.MODE_FIXED);*/
+       mTabL.setViewPager(mViewP);
         //
     }
 
@@ -83,9 +88,10 @@ public abstract class FragmentControl extends BaseFragment {
         initReceiver(new String[]{action_getPage});
         if (contain == null) {
             contain = inflater.inflate(R.layout.f_control, null);
-            assignViews();
-            initPager();
             requestPage();
+           /* assignViews();
+            initPager();*/
+
         }
         return contain;
     }
@@ -95,15 +101,18 @@ public abstract class FragmentControl extends BaseFragment {
         HttpGetController.getInstance().getHomeChildThirdPage(number1, number2, className);
     }
 
-    public void handlePage(String data) {
-        initData(data);
+    public void handlePage() {
+        //因为smarklayout上数据显示要在数据获取后才能显示，所以要改成放这里
+        assignViews();
+        initPager();
     }
 
     @Override
     public void onHttpHandle(String action, String data) {
+        this.data = data;
         if (getHttpStatus(data)) {
             if (action.equals(action_getPage)) {
-                handlePage(data);
+                handlePage();
             }
         }
 

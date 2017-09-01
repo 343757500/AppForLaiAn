@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,11 +15,32 @@ import cn.meiqu.baseproject.baseRecycle.BaseRecycleAdapter;
 import cn.meiqu.baseproject.view.RippleView;
 import cn.meiqu.lainmonitor.R;
 import cn.meiqu.lainmonitor.bean.HomePage;
+import cn.meiqu.lainmonitor.common.BaseRecycleHolder;
 
 
 public class RecycleHomeAdapter extends BaseRecycleAdapter {
     private Context mContent;
     private ArrayList<HomePage> homePages;
+    private ImageView imageView;
+    private int[] icons = new int[] {
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24,
+            R.mipmap.pic24
+    };
 
     public RecycleHomeAdapter(Context mContent, ArrayList<HomePage> homePages) {
         this.mContent = mContent;
@@ -37,7 +59,7 @@ public class RecycleHomeAdapter extends BaseRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(View.inflate(mContent, R.layout.recycle_home, null));
+        return new Holder(View.inflate(mContent, R.layout.recycle_home_child, null));
     }
 
     @Override
@@ -50,17 +72,19 @@ public class RecycleHomeAdapter extends BaseRecycleAdapter {
         return homePages.size();
     }
 
-    class Holder extends BaseHolder implements RippleView.OnRippleCompleteListener {
+    class Holder extends BaseHolder implements BaseRecycleHolder.RecycleViewItemClickListener, View.OnClickListener {
         public Holder(View itemView) {
             super(itemView);
-            ((RippleView) itemView).setOnRippleCompleteListener(this);
+           // ((RippleView) itemView).setOnRippleCompleteListener(this);
+            itemView.setOnClickListener(this);
         }
 
 
         TextView mTv;
 
         public void assignViews() {
-            mTv = (TextView) findViewById(R.id.tv);
+            mTv = (TextView) findViewById(R.id.tv_child);
+            imageView = (ImageView) findViewById(R.id.iv_child);
         }
 
 
@@ -70,17 +94,28 @@ public class RecycleHomeAdapter extends BaseRecycleAdapter {
             itemView.setScaleX(0.0f);
             itemView.animate().alpha(1.0f).scaleX(1.0f).setDuration(100 * position).start();
             String name = homePages.get(position).getName();
-            if (name.length() > 3) {
+           /* if (name.length() > 3) {
                 name = name.substring(0, 2) + "\n" + name.substring(2, name.length());
-            }
+            }*/
             mTv.setText("" + name);
+            imageView.setImageResource(icons[position]);
         }
 
-        @Override
+       /* @Override
         public void onComplete(RippleView rippleView) {
             if (getClickListener() != null) {
                 getClickListener().OnRecycleItemClick(getPosition());
             }
+        }*/
+
+        @Override
+        public void OnRecycleItemClick(View v, int position) {
+            getClickListener().OnRecycleItemClick(getPosition());
+        }
+
+        @Override
+        public void onClick(View view) {
+            getClickListener().OnRecycleItemClick(getPosition());
         }
     }
 }

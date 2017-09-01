@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +12,7 @@
     android:scrollbarAlwaysDrawHorizontalTrack="false" >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:paddingBottom="4dp"
@@ -19,8 +20,8 @@
 
     <TextView
         android:id="@+id/tv_addr"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -29,12 +30,12 @@
         android:singleLine="true"
         android:text="地址"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_locationName"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -43,12 +44,12 @@
         android:singleLine="true"
         android:text="所在位置"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -57,12 +58,12 @@
         android:singleLine="true"
         android:text="设备名称"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_maxTemp"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -71,12 +72,12 @@
         android:singleLine="true"
         android:text="温上限"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_minTemp"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -85,12 +86,12 @@
         android:singleLine="true"
         android:text="温下限"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_maxHum"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -99,12 +100,12 @@
         android:singleLine="true"
         android:text="湿上限"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_minHum"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -113,12 +114,12 @@
         android:singleLine="true"
         android:text="湿下限"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_interval"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -127,12 +128,12 @@
         android:singleLine="true"
         android:text="间隔"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_ip"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -142,12 +143,12 @@
         android:singleLine="true"
         android:text="对应IP端口"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/tv_action"
-        android:layout_width="160dp"
-        android:layout_height="match_parent"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -156,7 +157,7 @@
         android:singleLine="true"
         android:text="操作"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="8dp" />
 
     </LinearLayout>
 
