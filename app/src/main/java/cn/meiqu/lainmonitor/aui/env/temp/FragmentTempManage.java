@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -41,7 +42,6 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
     ArrayList<Ip> ips = new ArrayList<>();
     RecycleTempManageAdapter adapter;
     String[] addrs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
-
     @Override
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleTempManageAdapter(getActivity(), Temps);
@@ -218,7 +218,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
                         requestLocations();
                         return;
                     }
-                    for (int i = 0; i < Temps.size(); i++) {
+                    for (int i = 0; i < names.length; i++) {
                         names[i] = locations.get(i).getDlName();
                     }
                     AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setSingleChoiceItems(names, currentTemp, new DialogInterface.OnClickListener() {
@@ -239,6 +239,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             currentAddr = which;
+
                             mEdtAddress.setText(addrs[which] + "");
                             dialog.dismiss();
                         }
@@ -279,7 +280,16 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
                     return;
                 }
                 if (position == -1) {
-                    requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "", ips.get(currentIp).getDiId() + "", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
+
+                    for (int i = 0; i < Temps.size(); i++) {
+                        if (Temps.get(i).getEhmAddress()==Integer.parseInt(addrs[currentAddr])){
+                            toast("设备地址已经存在");
+                            return;
+                        }
+                    }
+                        requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "", "1", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
+
+
                 } else {
                     requestEdt(Temps.get(position).getEhmId() + "", Temps.get(position).getDeviceLocationPojo().getDlId() + "", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
                 }

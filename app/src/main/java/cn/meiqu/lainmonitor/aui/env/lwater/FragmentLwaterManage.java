@@ -46,6 +46,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleLocationManageAdapter(getActivity(), locationWaters);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_locationwater_top,null));
         return adapter;
     }
 
@@ -55,7 +56,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
         requestIps();
         viewGBody.getChildAt(0).setVisibility(View.GONE);
         mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_locationwater_top, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_locationwater_top2, null);
     }
 
     @Override

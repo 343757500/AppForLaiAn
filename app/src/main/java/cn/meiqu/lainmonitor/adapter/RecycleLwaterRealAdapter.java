@@ -73,13 +73,13 @@ public class RecycleLwaterRealAdapter extends BaseRecycleAdapter {
             mTvGallery.setText(water.getAddress() + "");
             if (water.getStatus() == 0) {
                 mTvStatus.setText("正常" + "");
-                mTvStatus.setBackgroundColor(mTvStatus.getResources().getColor(R.color.colorPrimary));
+                mTvStatus.setTextColor(mTvStatus.getResources().getColor(R.color.colorPrimary));
             } else if (water.getStatus() == 1) {
                 mTvStatus.setText(water.getLength() + "M处流水");
-                mTvStatus.setBackgroundColor(mTvStatus.getResources().getColor(R.color.red));
+                mTvStatus.setTextColor(mTvStatus.getResources().getColor(R.color.red));
             } else if (water.getStatus() == 2) {
                 mTvStatus.setText("未连接");
-                mTvStatus.setBackgroundColor(mTvStatus.getResources().getColor(R.color.selorgerds));
+                mTvStatus.setTextColor(mTvStatus.getResources().getColor(R.color.selorgerds));
             }
         }
 
