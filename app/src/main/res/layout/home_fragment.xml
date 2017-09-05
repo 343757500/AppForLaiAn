@@ -16,42 +16,31 @@
 
         </android.support.design.widget.TabLayout>-->
         <!--tabs-->
-        <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/tabL"
-            app:stl_clickable="true"
-            app:stl_defaultTabBackground="?attr/selectableItemBackground"
-            app:stl_defaultTabTextAllCaps="true"
-            app:stl_defaultTabTextColor="@color/white"
-            app:stl_defaultTabTextHorizontalPadding="16dp"
-            app:stl_defaultTabTextMinWidth="0dp"
-            app:stl_defaultTabTextSize="14sp"
-            app:stl_distributeEvenly="true"
-            app:stl_dividerColor="@color/white"
-            app:stl_dividerThickness="0dp"
-            app:stl_drawDecorationAfterTab="false"
-            app:stl_indicatorAlwaysInCenter="false"
-            app:stl_indicatorInFront="false"
-            app:stl_indicatorWidth="auto"
-            app:stl_indicatorWithoutPadding="false"
-            app:stl_overlineColor="@color/white"
-            app:stl_overlineThickness="0dp"
-            app:stl_titleOffset="24dp"
-            app:stl_underlineColor="@color/white"
-            app:stl_underlineThickness="1dp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/tabL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:stl_indicatorAlwaysInCenter="false"
+        app:stl_indicatorInFront="false"
+        app:stl_underlineThickness="0dp"
+        app:stl_dividerColor="@color/white"
+        app:stl_dividerThickness="0dp"
+        app:stl_defaultTabTextAllCaps="true"
+        app:stl_underlineColor="@color/white"
+        app:stl_defaultTabTextSize="12sp"
+        app:stl_defaultTabTextHorizontalPadding="16dp"
+        app:stl_defaultTabTextMinWidth="0dp"
+        app:stl_distributeEvenly="false"
 
+        app:stl_customTabTextLayoutId="@layout/custom_tab"
+        app:stl_customTabTextViewId="@id/custom_text"
 
-            app:stl_customTabTextLayoutId="@layout/custom_tab"
-            app:stl_customTabTextViewId="@id/custom_text"
-
-
-            app:stl_indicatorColor="#10d6ae"
-            app:stl_indicatorCornerRadius="18dp"
-            app:stl_indicatorGravity="center"
-            app:stl_indicatorInterpolation="smart"
-            app:stl_indicatorThickness="25dp"
-            ></com.ogaclejapan.smarttablayout.SmartTabLayout>
+        app:stl_indicatorColor="#10d6ae"
+        app:stl_indicatorCornerRadius="18dp"
+        app:stl_indicatorGravity="center"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="25dp"
+        />
 
 
 

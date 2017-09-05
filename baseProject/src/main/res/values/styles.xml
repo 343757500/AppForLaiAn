@@ -71,6 +71,10 @@
         <item name="android:background">@drawable/frame_border</item>
     </style>
 
+    <!--首页全屏沉侵式状态栏-->
+    <style name="FullImmerseMode" parent="BaseTheme">
+    </style>
+
 
 
 </resources>

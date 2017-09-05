@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import cn.meiqu.baseproject.util.UpdateUtil;
 import cn.meiqu.lainmonitor.adapter.PagerHomeAdapter;
 import cn.meiqu.lainmonitor.aui.ControlActivity;
+import cn.meiqu.lainmonitor.common.Global;
 import cn.meiqu.lainmonitor.view.NoScrollViewPager;
 
 /**
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 状态栏透明
+        Global.setNoStatusBarFullMode(this);
         assignViews();
         UpdateUtil.checkUpdate(getApplication(), false);
         addFragments();
@@ -74,6 +77,8 @@ public class MainActivity extends AppCompatActivity{
 
         mViewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout)findViewById(R.id.table);
+
+
 
 
 

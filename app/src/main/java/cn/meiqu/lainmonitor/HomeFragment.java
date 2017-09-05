@@ -132,6 +132,7 @@ public class HomeFragment extends BaseFragment {
         //mTabL.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));//设置指示器的颜色
        // mTabL.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabL.setViewPager(mViewP);
+        //设置可以滑动
 
 
     }

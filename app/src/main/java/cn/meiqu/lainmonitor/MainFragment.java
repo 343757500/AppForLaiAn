@@ -1,15 +1,10 @@
 package cn.meiqu.lainmonitor;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +19,11 @@ import cn.meiqu.baseproject.baseRecycle.BaseOnRecycleClickListener;
 import cn.meiqu.baseproject.baseUi.BaseActivity;
 import cn.meiqu.baseproject.baseUi.BaseFragment;
 import cn.meiqu.baseproject.httpGet.HttpGetController;
+import cn.meiqu.lainmonitor.adapter.DividerGridItemDecoration;
 import cn.meiqu.lainmonitor.adapter.RecycleHomeAdapter;
 import cn.meiqu.lainmonitor.bean.HomePage;
+
+import static cn.meiqu.baseproject.baseUi.BaseApp.mContext;
 
 /**
  * Created by Fatel on 16-5-24.
@@ -60,6 +58,11 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mRecycleV = (RecyclerView) findViewById(R.id.recycleV);
         adapter = new RecycleHomeAdapter(getActivity(), homePages);
         mRecycleV.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        //mRecycleV.addItemDecoration(new RecycleViewDivider(mContext,LinearLayoutManager.VERTICAL));
+       // mRecycleV.addItemDecoration(new GridDividerItemDecoration(10, Color.RED));
+
+        mRecycleV.addItemDecoration(new DividerGridItemDecoration(mContext));
+
         mRecycleV.setAdapter(adapter);
         adapter.setClickListener(this);
     }

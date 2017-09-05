@@ -14,6 +14,7 @@ import cn.meiqu.lainmonitor.aui.operation.FragmentOper;
 import cn.meiqu.lainmonitor.aui.power.FragmentPower;
 import cn.meiqu.lainmonitor.aui.security.FragmentSecy;
 import cn.meiqu.lainmonitor.aui.system.FragmentSystem;
+import cn.meiqu.lainmonitor.common.Global;
 
 /**
  * ControlActivity这里选择我们对应的fragment
@@ -35,6 +36,8 @@ public class ControlActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
+        // 状态栏透明
+        Global.setNoStatusBarFullMode(this);
         ButterKnife.bind(this);
         pId = getIntent().getStringExtra(extra_pId);
         cId = getIntent().getStringExtra(extra_cId);

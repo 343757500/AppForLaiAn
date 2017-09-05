@@ -12,9 +12,10 @@
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
         <activity
-            android:theme="@style/AppTheme"
+            android:theme="@style/FullImmerseMode"
             android:name=".MainActivity"></activity>
         <activity android:name=".MainNewActivity"></activity>
         <activity
@@ -25,9 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IpSettingActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".IpSettingActivity"
+            android:theme="@style/FullImmerseMode"/>
+        <activity android:name=".LoginActivity"
+            android:theme="@style/FullImmerseMode"/>
         <activity
+            android:theme="@style/FullImmerseMode"
             android:name=".aui.ControlActivity"
             android:label="@string/title_activity_control">
         </activity>

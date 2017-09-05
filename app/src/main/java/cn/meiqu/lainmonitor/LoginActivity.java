@@ -21,6 +21,7 @@ import cn.meiqu.baseproject.util.LogUtil;
 import cn.meiqu.baseproject.util.StringUtil;
 import cn.meiqu.baseproject.view.ClearEditText;
 import cn.meiqu.baseproject.view.RippleView;
+import cn.meiqu.lainmonitor.common.Global;
 import cn.meiqu.lainmonitor.view.CustomProgress;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, RippleView.OnRippleCompleteListener {
@@ -54,6 +55,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // 状态栏透明
+        Global.setNoStatusBarFullMode(this);
         initTransparent();
         assignViews();
         initReceiver(new String[]{action_login});

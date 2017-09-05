@@ -3,6 +3,7 @@ package cn.meiqu.lainmonitor.aui.env.lwater;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -265,7 +266,8 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
                     return;
                 }
                 if (position == -1) {
-                    requestAdd(addrs[currentAddr] + "", locations.get(currentLocation).getDlId() + "", ips.get(currentIp).getDiId() + "", name);
+                    requestAdd(addrs[currentAddr] + "", locations.get(currentLocation).getDlId() + "", "192.168.1.165:5500" + "", name);
+                    Log.e("hei","111");
                 } else {
                     requestEdt(locationWaters.get(position).getId() + "", name);
                 }
