@@ -60,7 +60,7 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mRecycleV.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         //mRecycleV.addItemDecoration(new RecycleViewDivider(mContext,LinearLayoutManager.VERTICAL));
        // mRecycleV.addItemDecoration(new GridDividerItemDecoration(10, Color.RED));
-
+        //添加recycleview的item分割线
         mRecycleV.addItemDecoration(new DividerGridItemDecoration(mContext));
 
         mRecycleV.setAdapter(adapter);

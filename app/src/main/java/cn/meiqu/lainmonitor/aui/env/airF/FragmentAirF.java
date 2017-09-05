@@ -14,9 +14,12 @@ import java.util.ArrayList;
 
 import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.httpGet.HttpGetController;
+import cn.meiqu.lainmonitor.adapter.DividerGridItemDecoration;
 import cn.meiqu.lainmonitor.adapter.RecycleAirFRealAdapter;
 import cn.meiqu.lainmonitor.aui.FragmentReal;
 import cn.meiqu.lainmonitor.bean.AirF;
+
+import static cn.meiqu.baseproject.baseUi.BaseApp.mContext;
 
 /**
  * Created by Fatel on 16-5-10.
@@ -32,6 +35,8 @@ public class FragmentAirF extends FragmentReal implements RecycleAirFRealAdapter
     public RecyclerView.Adapter getAdapter() {
         mRecycleV.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new RecycleAirFRealAdapter(getActivity(), AirFs);
+        //添加recycleview的item分割线
+        mRecycleV.addItemDecoration(new DividerGridItemDecoration(mContext));
         adapter.setOnAirClickListener(this);
         return adapter;
     }

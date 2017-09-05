@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kyleduo.switchbutton.SwitchButton;
+
 import java.util.ArrayList;
 
 import cn.meiqu.baseproject.baseRecycle.BaseHolder;
@@ -41,7 +43,7 @@ public class RecycleAirFRealAdapter extends BaseRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(View.inflate(mContent, R.layout.recycle_air, null));
+        return new Holder(View.inflate(mContent, R.layout.recycle_air2, null));
     }
 
     @Override
@@ -54,7 +56,7 @@ public class RecycleAirFRealAdapter extends BaseRecycleAdapter {
         return airFs.size();
     }
 
-    class Holder extends BaseHolder implements RippleView.OnRippleCompleteListener {
+    class Holder extends BaseHolder implements View.OnClickListener {
         public Holder(View itemView) {
             super(itemView);
             itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -62,23 +64,23 @@ public class RecycleAirFRealAdapter extends BaseRecycleAdapter {
 
         private TextView mTvAddr;
         private TextView mTvName;
-        private RippleView mRippleStudyBoot;
-        private RippleView mRippleStudyOff;
-        private RippleView mRippleOn;
-        private RippleView mRippleOff;
+        private TextView mRippleStudyBoot;
+        private TextView mRippleStudyOff;
+        //private TextView mRippleOn;
+        private SwitchButton switchBt;
 
         public void assignViews() {
             mTvAddr = (TextView) findViewById(R.id.tv_addr);
             mTvName = (TextView) findViewById(R.id.tv_name);
-            mRippleStudyBoot = (RippleView) findViewById(R.id.ripple_studyBoot);
-            mRippleStudyOff = (RippleView) findViewById(R.id.ripple_studyOff);
-            mRippleOn = (RippleView) findViewById(R.id.ripple_on);
-            mRippleOff = (RippleView) findViewById(R.id.ripple_off);
+            mRippleStudyBoot = (TextView) findViewById(R.id.ripple_studyBoot);
+            mRippleStudyOff = (TextView) findViewById(R.id.ripple_studyOff);
+           // mRippleOn = (TextView) findViewById(R.id.ripple_on);
+            switchBt= (SwitchButton) findViewById(R.id.switch_bt);
 
-            mRippleStudyBoot.setOnRippleCompleteListener(this);
-            mRippleStudyOff.setOnRippleCompleteListener(this);
-            mRippleOn.setOnRippleCompleteListener(this);
-            mRippleOff.setOnRippleCompleteListener(this);
+           mRippleStudyBoot.setOnClickListener(this);
+            mRippleStudyOff.setOnClickListener(this);
+           // mRippleOn.setOnClickListener(this);
+            switchBt.setOnClickListener(this);
         }
 
 
@@ -89,7 +91,7 @@ public class RecycleAirFRealAdapter extends BaseRecycleAdapter {
             mTvAddr.setText(airF.getAddress() + "");
         }
 
-        @Override
+        /*@Override
         public void onComplete(RippleView v) {
             if (getOnAirClickListener() != null) {
                 if (mRippleStudyBoot.getId() == v.getId()) {
@@ -100,6 +102,22 @@ public class RecycleAirFRealAdapter extends BaseRecycleAdapter {
                     getOnAirClickListener().onAirClick(getPosition(), "3");
                 } else if (mRippleOff.getId() == v.getId()) {
                     getOnAirClickListener().onAirClick(getPosition(), "4");
+                }
+            }
+        }*/
+
+        @Override
+        public void onClick(View v) {
+            if (getOnAirClickListener() != null) {
+                if (mRippleStudyBoot.getId() == v.getId()) {
+                    getOnAirClickListener().onAirClick(getPosition(), "1");
+                } else if (mRippleStudyOff.getId() == v.getId()) {
+                    getOnAirClickListener().onAirClick(getPosition(), "2");
+                } else if (switchBt.isChecked()) {
+                    getOnAirClickListener().onAirClick(getPosition(), "3");
+                } else if (!switchBt.isChecked()) {
+                    getOnAirClickListener().onAirClick(getPosition(), "4");
+
                 }
             }
         }
