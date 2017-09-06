@@ -12,6 +12,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+import org.xutils.x;
+
 import java.io.File;
 
 import cn.meiqu.baseproject.Sdcard;
@@ -33,6 +35,12 @@ public class BaseApp extends Application {
         initImageLoader(this);
 //        initJpush();
 //        createFolder();
+
+
+        //初始化xutils3框架
+        x.Ext.init(this);
+
+
     }
 
     public static String getCurProcessName(Context context) {

@@ -20,6 +20,7 @@ public class HomePage {
     private int isShow;
     private String name;
     private int number;
+    private String iconUrl;
 
     public int getId() {
         return id;
@@ -51,5 +52,14 @@ public class HomePage {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 }

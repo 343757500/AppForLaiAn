@@ -7,8 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.xutils.x;
+
 import java.util.ArrayList;
 
+import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.baseRecycle.BaseHolder;
 import cn.meiqu.baseproject.baseRecycle.BaseOnRecycleClickListener;
 import cn.meiqu.baseproject.baseRecycle.BaseRecycleAdapter;
@@ -94,11 +97,15 @@ public class RecycleHomeAdapter extends BaseRecycleAdapter {
             itemView.setScaleX(0.0f);
             itemView.animate().alpha(1.0f).scaleX(1.0f).setDuration(100 * position).start();
             String name = homePages.get(position).getName();
+            String iconUrl = homePages.get(position).getIconUrl();
            /* if (name.length() > 3) {
                 name = name.substring(0, 2) + "\n" + name.substring(2, name.length());
             }*/
             mTv.setText("" + name);
-            imageView.setImageResource(icons[position]);
+            //imageView.setImageResource(iconUrl);
+            String absolutePath = API.getAbsolutePath("ktr-mrms" + iconUrl);
+
+            x.image().bind(imageView, absolutePath);
         }
 
        /* @Override

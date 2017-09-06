@@ -43,4 +43,6 @@ dependencies {
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     //好看的选择按钮
     compile 'com.kyleduo.switchbutton:library:1.4.6'
+
+    compile 'org.xutils:xutils:3.3.40'
 }
