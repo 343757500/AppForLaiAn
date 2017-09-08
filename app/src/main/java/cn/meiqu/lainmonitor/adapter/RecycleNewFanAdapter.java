@@ -50,7 +50,7 @@ public class RecycleNewFanAdapter extends BaseRecycleAdapter {
         return newFans.size();
     }
 
-    class Holder extends BaseHolder implements RippleView.OnRippleCompleteListener {
+    class Holder extends BaseHolder implements View.OnClickListener {
         public Holder(View itemView) {
             super(itemView);
         }
@@ -58,16 +58,17 @@ public class RecycleNewFanAdapter extends BaseRecycleAdapter {
         private TextView mTvName;
         private TextView mTvGallery;
         private TextView mTvStatus;
-        private RippleView mRippleAction;
+       // private TextView mRippleAction;
         private TextView mTvAction;
 
         public void assignViews() {
             mTvName = (TextView) findViewById(R.id.tv_name);
             mTvGallery = (TextView) findViewById(R.id.tv_gallery);
             mTvStatus = (TextView) findViewById(R.id.tv_status);
-            mRippleAction = (RippleView) findViewById(R.id.ripple_action);
+            //mRippleAction = (TextView) findViewById(R.id.ripple_action);
             mTvAction = (TextView) findViewById(R.id.tv_action);
-            mRippleAction.setOnRippleCompleteListener(this);
+            //mRippleAction.setOnRippleCompleteListener(this);
+            mTvAction.setOnClickListener(this);
         }
 
         @Override
@@ -76,10 +77,11 @@ public class RecycleNewFanAdapter extends BaseRecycleAdapter {
             mTvName.setText(newFan.getName() + "");
             mTvGallery.setText(newFan.getGallery() + "");
             mTvStatus.setBackgroundColor(mTvStatus.getResources().getColor(R.color.colorPrimary));
-            mTvAction.setBackgroundColor(mTvStatus.getResources().getColor(R.color.colorAccent));
+            //mTvAction.setBackgroundColor(mTvStatus.getResources().getColor(R.color.colorAccent));
             if (newFan.getStatus() == 0) {
                 mTvStatus.setText("已关" + "");
-//                mTvStatus.setBackgroundColor(mTvStatus.getResources().getColor(R.color.colorPrimary));
+                mTvStatus.setBackgroundColor(mTvStatus.getResources().getColor(R.color.textSattebackground));
+                mTvAction.setTextColor((mTvStatus.getResources().getColor(R.color.white)));
                 mTvAction.setText("打开");
             } else if (newFan.getStatus() == 1) {
                 mTvStatus.setText("已开");
@@ -92,8 +94,9 @@ public class RecycleNewFanAdapter extends BaseRecycleAdapter {
 
         }
 
+
         @Override
-        public void onComplete(RippleView rippleView) {
+        public void onClick(View view) {
             if (getClickListener() != null) {
                 getClickListener().OnRecycleItemClick(getPosition());
             }

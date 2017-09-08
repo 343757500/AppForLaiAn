@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -9,8 +10,7 @@
 
     <TextView
         android:id="@+id/tv_addr"
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="26dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -20,12 +20,11 @@
         android:singleLine="true"
         android:text="地址"
         android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:textSize="10dp" />
 
     <TextView
         android:id="@+id/tv_locationName"
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -35,12 +34,11 @@
         android:singleLine="true"
         android:text="所在位置"
         android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:textSize="10dp" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -50,12 +48,13 @@
         android:singleLine="true"
         android:text="设备名称"
         android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:textSize="10dp" />
+
     <TextView
         android:id="@+id/tv_ip"
-        android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -64,39 +63,19 @@
         android:singleLine="true"
         android:text="对应IP端口"
         android:textColor="@color/white"
-        android:textSize="10sp" />
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tv_action"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:background="@drawable/shape_tvbuton"
-            android:id="@+id/tv_edt"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:gravity="center"
-            android:padding="6dp"
-            android:singleLine="true"
-            android:text="修改"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-
-        <TextView
-            android:background="@drawable/shape_tvbuton"
-            android:id="@+id/tv_del"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:gravity="center"
-            android:padding="6dp"
-            android:singleLine="true"
-            android:text="删除"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-    </LinearLayout>
-
+        android:paddingBottom="6dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="6dp"
+        android:singleLine="true"
+        android:text="操作"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
 </LinearLayout>

@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#10d6ae</color>
     <color name="colorAccent">#373737</color>
 
+    <color name="textSatte">#b4bec7</color>
+    <color name="textSattebackground">#778898</color>
+
     <color name="red">#f00</color>
     <color name="title_color">#00000000</color>
     <color name="history_color">#999999</color>

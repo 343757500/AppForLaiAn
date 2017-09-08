@@ -46,6 +46,8 @@ public class FragmentAirFManage extends FragmentAlert implements RecycleAirFMana
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleAirFManageAdapter(getActivity(), AirFs);
         adapter.setOnItemClickListner(this);
+
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_airf_top,null));
         return adapter;
     }
 
@@ -55,7 +57,7 @@ public class FragmentAirFManage extends FragmentAlert implements RecycleAirFMana
         requestIps();
         viewGBody.getChildAt(0).setVisibility(View.GONE);
         mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_airf_top, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_airf_top1, null);
     }
 
     @Override
