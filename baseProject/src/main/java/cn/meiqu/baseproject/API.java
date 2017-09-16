@@ -16,6 +16,8 @@ public class API {
     public static String getLocationWaterReal = "ktr-mrms/reqLocationDataJson.html";
     public static String getDotWaterReal = "ktr-mrms/reqDotModelDataJson.html";
     public static String getThunderReal = "ktr-mrms/reqAntiThunderDataJson.html";
+    public static String getDustReal = "ktr-mrms/requestPoisonousData.html?lId=1";
+    public static String getNoiseReal = "ktr-mrms/requestNoiseData.html?lId=1";
     public static String getCo2Real = "ktr-mrms/reqCo2DataJson.html";
     public static String getSElecReal = "ktr-mrms/reqElectricSupplyDataJson.html";
     public static String getPElecReal = "ktr-mrms/reqElectricBoxDataJson.html";
@@ -97,6 +99,7 @@ public class API {
     public static String getCo2locations = "ktr-mrms/queLocationJson.html";
 
     public static String getTempManage = "ktr-mrms/queHumitureManageJson.html";
+    public static String getNoiseManage = "ktr-mrms/queHumitureManageJson.html";
     public static String edtTemp = "ktr-mrms/updHumitureManageInfo.html";
     public static String addTemp = "ktr-mrms/addHumitureManageInfo.html";
     public static String delTemp = "ktr-mrms/delHumitureManageInfo.html";
@@ -169,6 +172,8 @@ public class API {
     public static String showCurrentLoginUserUrl = "ktr-mrms/showCurrentLoginUserJson.html";
     //更新管理员
     public static String updateLoginUserUrl = "ktr-mrms/updCurrentLoginUserJson.html";
+
+    public static String queSystemLogDataJsonUrl = "ktr-mrms/showCurrentLoginUserJson.html";
 
     //精密空调发送控制
     public static String kgjStateOpenUrl = "ktr-mrms/opencracJson.html";

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import cn.meiqu.baseproject.dao.SettingDao;
+import cn.meiqu.baseproject.view.RippleView;
 import cn.meiqu.lainmonitor.activity.InformationChangeActivity;
 import cn.meiqu.lainmonitor.activity.PersonalInfomationActivity;
 import cn.meiqu.lainmonitor.activity.SettingActivity;
@@ -22,7 +23,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 public class MineFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private FancyButton settingTv;
+    private RippleView settingTv;
     private TextView personalInfomation;
     private TextView informationChange;
 
@@ -53,7 +54,7 @@ public class MineFragment extends Fragment {
 
         personalInfomation = (TextView) rootView.findViewById(R.id.personal_information);
         informationChange = (TextView) rootView.findViewById(R.id.information_change);
-        settingTv = (FancyButton) rootView.findViewById(R.id.fb_logout);
+        settingTv = (RippleView) rootView.findViewById(R.id.fb_logout);
 
 
         initOnClickListener();

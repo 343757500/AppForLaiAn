@@ -9,11 +9,75 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingRight">20dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:drawableRight">@mipmap/common_btn_rightarrow</item>
+        <item name="android:drawableLeft">@mipmap/bon2</item>
         <item name="android:background">@drawable/bg_list_select</item>
     </style>
+
+    <style name="MineEditSetting">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:drawableRight">@mipmap/common_btn_rightarrow</item>
+        <item name="android:drawableLeft">@mipmap/bon1</item>
+        <item name="android:background">@drawable/bg_list_select</item>
+    </style>
+
+    <style name="MineEditClear">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:drawableRight">@mipmap/common_btn_rightarrow</item>
+        <item name="android:drawableLeft">@mipmap/bon3</item>
+        <item name="android:background">@drawable/bg_list_select</item>
+    </style>
+
+    <style name="MineEditAbout">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:drawableRight">@mipmap/common_btn_rightarrow</item>
+        <item name="android:drawableLeft">@mipmap/bon4</item>
+        <item name="android:background">@drawable/bg_list_select</item>
+    </style>
+
+    <style name="MineEditInfo">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:drawableRight">@mipmap/common_btn_rightarrow</item>
+        <item name="android:drawableLeft">@mipmap/bon5</item>
+        <item name="android:background">@drawable/bg_list_select</item>
+    </style>
+
+
+
 
     <!-- 自定义Dialog -->
     <style name="Custom_Progress" parent="@android:style/Theme.Dialog">

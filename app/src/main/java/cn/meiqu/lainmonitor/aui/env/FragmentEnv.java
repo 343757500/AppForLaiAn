@@ -16,6 +16,7 @@ import cn.meiqu.lainmonitor.aui.env.co2.FragmentCo2Manage;
 import cn.meiqu.lainmonitor.aui.env.co2.FragmentCo2Real;
 import cn.meiqu.lainmonitor.aui.env.dotwater.FragmentDotWaterAlart;
 import cn.meiqu.lainmonitor.aui.env.dotwater.FragmentDotWaterReal;
+import cn.meiqu.lainmonitor.aui.env.dust.FragmentDustReal;
 import cn.meiqu.lainmonitor.aui.env.lighting.FragmentLighting;
 import cn.meiqu.lainmonitor.aui.env.lwater.FragmentLwaterAlart;
 import cn.meiqu.lainmonitor.aui.env.lwater.FragmentLwaterManage;
@@ -23,6 +24,8 @@ import cn.meiqu.lainmonitor.aui.env.lwater.FragmentLwaterReal;
 import cn.meiqu.lainmonitor.aui.env.newfan.FragmentNewFan;
 import cn.meiqu.lainmonitor.aui.env.nlwater.FragmentNLwaterAlart;
 import cn.meiqu.lainmonitor.aui.env.nlwater.FragmentNLwaterReal;
+import cn.meiqu.lainmonitor.aui.env.noise.FragmentNoiseManage;
+import cn.meiqu.lainmonitor.aui.env.noise.FragmentNoiseReal;
 import cn.meiqu.lainmonitor.aui.env.temp.FragmentTempAlert;
 import cn.meiqu.lainmonitor.aui.env.temp.FragmentTempChart;
 import cn.meiqu.lainmonitor.aui.env.temp.FragmentTempManage;
@@ -119,6 +122,24 @@ public class FragmentEnv extends FragmentControl {
         }
 
         //粉尘
+        else if (number2.equals("12")) {
+            if (thirdPages.size() >= 1)
+                fragments.add(new FragmentDustReal());
+            if (thirdPages.size() >= 2)
+                fragments.add(new FragmentThunderAlart());
+        }
+
+
+        //噪声
+        else if (number2.equals("13")) {
+            if (thirdPages.size() >= 1)
+                fragments.add(new FragmentNoiseReal());
+            if (thirdPages.size() >= 4)
+                fragments.add(new FragmentNoiseManage());
+        }
+
+
+        //中央空调
         else if (number2.equals("12")) {
             if (thirdPages.size() >= 1)
                 fragments.add(new FragmentThunderReal());

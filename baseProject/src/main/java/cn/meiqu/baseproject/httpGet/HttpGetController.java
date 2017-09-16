@@ -106,6 +106,14 @@ public class HttpGetController {
         post(API.getThunderReal, getTokenBuild(), className);
     }
 
+    public void getDustReal(String className) {
+        post(API.getDustReal, getTokenBuild(), className);
+    }
+
+    public void getNoiseReal(String className) {
+        post(API.getNoiseReal, getTokenBuild(), className);
+    }
+
     public void getCO2Real(String className) {
         post(API.getCo2Real, getTokenBuild(), className);
     }
@@ -706,6 +714,11 @@ public class HttpGetController {
 
     public void getTempManageList(String className) {
         post(API.getTempManage, getTokenBuild(), className);
+    }
+
+
+    public void getNoiseManageList(String className) {
+        post(API.getNoiseManage, getTokenBuild(), className);
     }
 
     public void addTempManage(String deviceAddress, String deviceLocation, String ipAddress, String deviceName, String maxTemp, String minTemp, String maxHum, String minHum, String interval, String className) {

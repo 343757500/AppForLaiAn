@@ -11,12 +11,13 @@
      android:id="@+id/re_image"
      android:gravity="center"
      android:layout_width="match_parent"
-     android:layout_height="wrap_content">
+     android:layout_height="150dp"
+     android:background="@mipmap/my">
 
    <ImageView
        android:id="@+id/image"
        android:layout_marginTop="10dp"
-       android:src="@drawable/admin"
+       android:src="@mipmap/touxiang"
        android:layout_width="100dp"
        android:layout_height="100dp" />
  </RelativeLayout>
@@ -29,35 +30,71 @@
      android:layout_width="match_parent"
      android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/personal_information"
-        style="@style/MineEdit"
-        android:text="个人信息"/>
+     <TextView
+         android:id="@+id/information_change"
+         style="@style/MineEditSetting"
+         android:text="信息修改"
+         />
 
-    <TextView
-        android:id="@+id/information_change"
-        style="@style/MineEdit"
-        android:text="信息修改"
-        />
+     <TextView
+         android:id="@+id/personal_information"
+         style="@style/MineEdit"
+         android:text="个人信息"/>
+
+     <TextView
+         android:id="@+id/personal_clearcache"
+         style="@style/MineEditClear"
+         android:text="清理缓存"/>
+
+     <TextView
+         android:id="@+id/personal_about"
+         style="@style/MineEditAbout"
+         android:text="关于我们"/>
+
+     <TextView
+         android:id="@+id/information"
+         style="@style/MineEditInfo"
+         android:text="版本信息"/>
 
 
 
+
+     <cn.meiqu.baseproject.view.RippleView
+         android:layout_gravity="center_horizontal"
+         android:id="@+id/fb_logout"
+         android:layout_width="150dp"
+         android:background="@drawable/bt_login"
+         android:layout_height="40dp"
+         android:layout_marginTop="15dp">
+
+         <TextView
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+
+             android:gravity="center"
+             android:text="退出登录"
+             android:textColor="@color/white"
+             android:textSize="20dp" />
+     </cn.meiqu.baseproject.view.RippleView>
 
 
  </LinearLayout>
 
-    <mehdi.sakout.fancybuttons.FancyButton
+<!--    <mehdi.sakout.fancybuttons.FancyButton
 
         android:id="@+id/fb_logout"
         android:background="@color/window_background"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_alignParentBottom="true"
         app:fb_text="退出登录"
         app:fb_textColor="@color/white"
         app:fb_defaultColor="@color/color_red"
-        app:fb_focusColor="@color/color_backround"/>
+        app:fb_focusColor="@color/color_backround"/>-->
+
+
+
 
     <FrameLayout
         android:id="@+id/contain_id"

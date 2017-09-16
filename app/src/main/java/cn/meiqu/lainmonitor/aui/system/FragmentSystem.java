@@ -1,6 +1,7 @@
 package cn.meiqu.lainmonitor.aui.system;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import cn.meiqu.lainmonitor.bean.ThirdPage;
 public class FragmentSystem extends FragmentControl {
     @Override
     public void initFragments(List<Fragment> fragments, ArrayList<ThirdPage> thirdPages) {
+
+        Log.e("hei",number2);
         //设备管理
         if (number2.equals("1")) {
             if (thirdPages.size() >= 1)
@@ -34,8 +37,9 @@ public class FragmentSystem extends FragmentControl {
                 fragments.add(new Fragment8052());
         }
         //系统操作
-        else if (number2.equals("2")) {
-
+        else if (number2.equals("0")) {
+            fragments.add(new FragmentLogmewage());
+            mTabL.setVisibility(View.GONE);
         }
         //管理员
         else if (number2.equals("3")) {
