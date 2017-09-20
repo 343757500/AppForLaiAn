@@ -20,32 +20,36 @@ import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.httpGet.HttpGetController;
 import cn.meiqu.baseproject.util.StringUtil;
 import cn.meiqu.lainmonitor.R;
+import cn.meiqu.lainmonitor.adapter.RecycleNoiseManageAdapter;
 import cn.meiqu.lainmonitor.adapter.RecycleTempManageAdapter;
 import cn.meiqu.lainmonitor.aui.FragmentAlert;
 import cn.meiqu.lainmonitor.bean.Ip;
 import cn.meiqu.lainmonitor.bean.Location;
+import cn.meiqu.lainmonitor.bean.NoiseList;
 import cn.meiqu.lainmonitor.bean.TempReal;
+
+import static cn.meiqu.lainmonitor.aui.FragmentControl.number2;
 
 /**
  * Created by Fatel on 16-5-10.
  */
-public class FragmentNoiseManage extends FragmentAlert implements RecycleTempManageAdapter.OnItemClickListner {
-    String action_getData = className + API.getTempManage;
-    String action_add = className + API.addTemp;
-    String action_edt = className + API.edtTemp;
-    String action_del = className + API.delTemp;
-    String action_getIP = className + API.getTempIP;
+public class FragmentNoiseManage extends FragmentAlert implements RecycleNoiseManageAdapter.OnItemClickListner {
+    String action_getData = className + API.getNoiseManage;
+    String action_add = className + API.addNoise;
+    String action_edt = className + API.edtNoise;
+    String action_del = className + API.delNoise;
+    String action_getIP = className + API.getTempIP1;
     String action_getLocation = className + API.getTemplocations;
-    ArrayList<TempReal> Temps = new ArrayList<>();
+    ArrayList<NoiseList> Temps = new ArrayList<>();
     ArrayList<Location> locations = new ArrayList<>();
     ArrayList<Ip> ips = new ArrayList<>();
-    RecycleTempManageAdapter adapter;
+    RecycleNoiseManageAdapter adapter;
     String[] addrs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
     @Override
     public RecyclerView.Adapter getAdapter() {
-        adapter = new RecycleTempManageAdapter(getActivity(), Temps);
+        adapter = new RecycleNoiseManageAdapter(getActivity(), Temps);
         adapter.setOnItemClickListner(this);
-        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_top,null));
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_noise_top,null));
         return adapter;
     }
 
@@ -75,7 +79,7 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
     }
 
     public void handleData(String data) {
-        ArrayList<TempReal> temps = new Gson().fromJson(data, new TypeToken<ArrayList<TempReal>>() {
+        ArrayList<NoiseList> temps = new Gson().fromJson(data, new TypeToken<ArrayList<NoiseList>>() {
         }.getType());
         Temps.clear();
         Temps.addAll(temps);
@@ -94,7 +98,7 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
     }
 
     public void requestIps() {
-        HttpGetController.getInstance().getTempIpList(className);
+        HttpGetController.getInstance().getNoiseIpList(className,number2);
     }
 
     public void handleIps(String data) {
@@ -104,19 +108,19 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
         ips.addAll(temps);
     }
 
-    public void requestAdd(String deviceAddress, String deviceLocation, String ipAddress, String deviceName, String maxTemp, String minTemp, String maxHum, String minHum, String interval) {
+    public void requestAdd(String deviceAddress, String deviceLocation, String ipAddress, String deviceName, String maxTemp, String minHum, String interval) {
         showProgressDialog();
-        HttpGetController.getInstance().addTempManage(deviceAddress, deviceLocation, ipAddress, deviceName, maxTemp, minTemp, maxHum, minHum, interval, className);
+        HttpGetController.getInstance().addNoiseManage(deviceAddress, deviceLocation, ipAddress, deviceName, maxTemp, minHum, interval, className);
     }
 
-    public void requestEdt(String id, String address, String name, String maxTemp, String minTemp, String maxHum, String minHum, String interval) {
+    public void requestEdt(String id, String address, String name, String maxTemp, String minTemp, String interval) {
         showProgressDialog();
-        HttpGetController.getInstance().edtTempManage(id, address, name, maxTemp, minTemp, maxHum, minHum, interval, className);
+        HttpGetController.getInstance().edtNoiseManage(id, address, name, maxTemp, minTemp, interval, className);
     }
 
     //
     public void requestDel(String id, String ip) {
-        HttpGetController.getInstance().delTempManage(id, ip, className);
+        HttpGetController.getInstance().delNoiseManage(id, ip, className);
     }
 
     public void handleEdt(String data) {
@@ -160,15 +164,14 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
     int currentIp = 0;
 
     public void showEdtDialog(final int position) {
-        View body = LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_input, null);
+        View body = LayoutInflater.from(getActivity()).inflate(R.layout.layout_noise_input, null);
         final EditText mEdtAddress;
         final EditText mEdtLocation;
         final EditText mEdtIp;
         final EditText mEdtName;
         final EditText mEdtMaxTemp;
         final EditText mEdtMinTemp;
-        final EditText mEdtMaxHum;
-        final EditText mEdtMinHum;
+
         final EditText mEdtInterval;
 
         mEdtAddress = (EditText) body.findViewById(R.id.edt_address);
@@ -177,22 +180,20 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
         mEdtName = (EditText) body.findViewById(R.id.edt_name);
         mEdtMaxTemp = (EditText) body.findViewById(R.id.edt_maxTemp);
         mEdtMinTemp = (EditText) body.findViewById(R.id.edt_minTemp);
-        mEdtMaxHum = (EditText) body.findViewById(R.id.edt_maxHum);
-        mEdtMinHum = (EditText) body.findViewById(R.id.edt_minHum);
+
         mEdtInterval = (EditText) body.findViewById(R.id.edt_interval);
 
         String title = "设备修改";
         if (position != -1) {
-            final TempReal Temp = Temps.get(position);
-            mEdtAddress.setText("" + Temp.getEhmAddress());
+            final NoiseList Temp = Temps.get(position);
+            mEdtAddress.setText("" + Temp.getNoiseAddress());
             mEdtLocation.setText("" + Temp.getDeviceLocationPojo().getDlName());
             mEdtIp.setText("" + Temp.getIpPort());
-            mEdtName.setText(Temp.getEhmName() + "");
-            mEdtMaxTemp.setText("" + Temp.getEhmMaxTemp());
-            mEdtMinTemp.setText("" + Temp.getEhmMinTemp());
-            mEdtMaxHum.setText("" + Temp.getEhmMaxHum());
-            mEdtMinHum.setText("" + Temp.getEhmMinTemp());
-            mEdtInterval.setText("" + Temp.getEhmInterval());
+            mEdtName.setText(Temp.getDevicename() + "");
+            mEdtMaxTemp.setText("" + Temp.getMaxNoise());
+            mEdtMinTemp.setText("" + Temp.getMinNoise());
+
+            mEdtInterval.setText("" + Temp.getIntervaltime());
         } else {
             title = "设备添加";
             mEdtAddress.setText("" + addrs[0]);
@@ -281,16 +282,16 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
                 if (position == -1) {
 
                     for (int i = 0; i < Temps.size(); i++) {
-                        if (Temps.get(i).getEhmAddress()==Integer.parseInt(addrs[currentAddr])){
+                        if (Temps.get(i).getNoiseAddress()==Integer.parseInt(addrs[currentAddr])){
                             toast("设备地址已经存在");
                             return;
                         }
                     }
-                        requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "", "1", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
+                        requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "", ips.get(currentIp).getDiId()+"", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtInterval.getText().toString());
 
 
                 } else {
-                    requestEdt(Temps.get(position).getEhmId() + "", Temps.get(position).getDeviceLocationPojo().getDlId() + "", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
+                    requestEdt(Temps.get(position).getId() + "", Temps.get(position).getDeviceLocationPojo().getDlId() + "", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtInterval.getText().toString());
                 }
             }
         }).setNegativeButton("取消", null).setView(body).show();
@@ -303,7 +304,7 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
 
     @Override
     public void onItemDel(final int position) {
-        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setMessage("是否要删除" + Temps.get(position).getEhmName() + "?").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setMessage("是否要删除" + Temps.get(position).getDevicename() + "?").setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -311,7 +312,7 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleTempMan
         }).setPositiveButton("是", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                requestDel(Temps.get(position).getEhmId() + "", Temps.get(position).getIp() + "");
+                requestDel(Temps.get(position).getId() + "", Temps.get(position).getIp() + "");
             }
         }).show();
     }

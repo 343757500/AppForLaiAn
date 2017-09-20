@@ -99,11 +99,18 @@ public class API {
     public static String getCo2locations = "ktr-mrms/queLocationJson.html";
 
     public static String getTempManage = "ktr-mrms/queHumitureManageJson.html";
-    public static String getNoiseManage = "ktr-mrms/queHumitureManageJson.html";
+    public static String getNoiseManage = "ktr-mrms/queNoiseManageJson.html";
     public static String edtTemp = "ktr-mrms/updHumitureManageInfo.html";
+    public static String edtNoise = "ktr-mrms/updNoiseManageInfoJson.html";
     public static String addTemp = "ktr-mrms/addHumitureManageInfo.html";
+
+    public static String addNoise = "ktr-mrms/addNoiseManageInfoJson.html";
     public static String delTemp = "ktr-mrms/delHumitureManageInfo.html";
+
+    public static String delNoise = "ktr-mrms/delNoiseManageInfoJson.html";
     public static String getTempIP = "ktr-mrms/queIpJson.html";
+    public static String getTempIP1 = "ktr-mrms/queIpListJson.html";
+
     public static String getTemplocations = "ktr-mrms/queLocationJson.html";
 
     public static String getAirFManage = "ktr-mrms/queFissionAirManageJson.html";

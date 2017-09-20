@@ -735,6 +735,19 @@ public class HttpGetController {
         get(API.addTemp, param.toString(), className);
     }
 
+
+    public void addNoiseManage(String deviceAddress, String deviceLocation, String ipAddress, String deviceName, String maxTemp, String minTemp, String interval, String className) {
+        StringBuilder param = new StringBuilder();
+        param.append("deviceAddress=" + deviceAddress).append("&");
+        param.append("deviceLocation=" + deviceLocation).append("&");
+        param.append("deviceName=" + deviceName).append("&");
+        param.append("ipAddress=" + ipAddress).append("&");
+        param.append("maxNoise=" + maxTemp).append("&");
+        param.append("minNoise=" + minTemp).append("&");
+        param.append("interval=" + interval);
+        get(API.addNoise, param.toString(), className);
+    }
+
     public void edtTempManage(String id, String address, String name, String maxTemp, String minTemp, String maxHum, String minHum, String interval, String className) {
         StringBuilder param = new StringBuilder();
         param.append("id=" + id).append("&");
@@ -748,6 +761,17 @@ public class HttpGetController {
         get(API.edtTemp, param.toString(), className);
     }
 
+    public void edtNoiseManage(String id, String address, String name, String maxTemp, String minTemp, String interval, String className) {
+        StringBuilder param = new StringBuilder();
+        param.append("maxNoise=" + maxTemp).append("&");
+        param.append("minNoise=" + minTemp).append("&");
+        param.append("interval=" + interval).append("&");
+        param.append("address=" + address).append("&");
+        param.append("id=" + id).append("&");
+        param.append("name="+name);
+        get(API.edtNoise, param.toString(), className);
+    }
+
     public void delTempManage(String id, String ip, String className) {
         StringBuilder param = new StringBuilder();
         param.append("id=" + id).append("&");
@@ -755,9 +779,28 @@ public class HttpGetController {
         get(API.delTemp, param.toString(), className);
     }
 
+    public void delNoiseManage(String id, String ip, String className) {
+        StringBuilder param = new StringBuilder();
+        param.append("id=" + id).append("&");
+        param.append("ip=" + ip);
+        get(API.delNoise, param.toString(), className);
+    }
+
 
     public void getTempIpList(String className) {
         post(API.getTempIP, getTokenBuild(), className);
+    }
+
+    public void getTempIpList1(String className,String number) {
+        StringBuilder param = new StringBuilder();
+        param.append("number=" + number);
+        get(API.getTempIP1, param.toString(), className);
+    }
+
+    public void getNoiseIpList(String className,String number) {
+        StringBuilder param = new StringBuilder();
+        param.append("number=" + number);
+        get(API.getTempIP1, param.toString(), className);
     }
 
     public void getTempLocationsList(String className) {

@@ -27,6 +27,8 @@ import cn.meiqu.lainmonitor.bean.Ip;
 import cn.meiqu.lainmonitor.bean.Location;
 import cn.meiqu.lainmonitor.bean.TempReal;
 
+import static cn.meiqu.lainmonitor.aui.FragmentControl.number2;
+
 /**
  * Created by Fatel on 16-5-10.
  */
@@ -35,7 +37,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
     String action_add = className + API.addTemp;
     String action_edt = className + API.edtTemp;
     String action_del = className + API.delTemp;
-    String action_getIP = className + API.getTempIP;
+    String action_getIP = className + API.getTempIP1;
     String action_getLocation = className + API.getTemplocations;
     ArrayList<TempReal> Temps = new ArrayList<>();
     ArrayList<Location> locations = new ArrayList<>();
@@ -95,7 +97,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
     }
 
     public void requestIps() {
-        HttpGetController.getInstance().getTempIpList(className);
+        HttpGetController.getInstance().getTempIpList1(className,number2);
     }
 
     public void handleIps(String data) {
@@ -287,7 +289,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
                             return;
                         }
                     }
-                        requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "", "1", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
+                        requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "",ips.get(currentIp).getDiId()+"", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
 
 
                 } else {

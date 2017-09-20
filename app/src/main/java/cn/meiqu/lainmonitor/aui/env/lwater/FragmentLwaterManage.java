@@ -27,6 +27,8 @@ import cn.meiqu.lainmonitor.bean.Ip;
 import cn.meiqu.lainmonitor.bean.Location;
 import cn.meiqu.lainmonitor.bean.LocationWater;
 
+import static cn.meiqu.lainmonitor.aui.FragmentControl.number2;
+
 /**
  * Created by Fatel on 16-5-10.
  */
@@ -35,7 +37,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
     String action_add = className + API.addLocation;
     String action_edt = className + API.edtLocation;
     String action_del = className + API.delLocation;
-    String action_getIP = className + API.getLocationIP;
+    String action_getIP = className + API.getTempIP1;
     String action_getLocation = className + API.getLocationlocations;
     ArrayList<LocationWater> locationWaters = new ArrayList<>();
     ArrayList<Location> locations = new ArrayList<>();
@@ -96,7 +98,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
     }
 
     public void requestIps() {
-        HttpGetController.getInstance().getLocationIpList(className);
+        HttpGetController.getInstance().getTempIpList1(className,number2);
     }
 
     public void handleIps(String data) {

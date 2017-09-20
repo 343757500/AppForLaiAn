@@ -5,6 +5,16 @@
     android:orientation="vertical"
     android:padding="3dp">
 
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -17,15 +27,7 @@
             android:orientation="vertical"
             android:paddingRight="5dp">
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textColor="@color/colorAccent"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -51,13 +53,13 @@
 
                     <TextView
                         android:id="@+id/tv_Avol"
+                        android:background="@drawable/textdrawble"
+                        android:textColor="@color/textcolor"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textColor="@color/white"
                         android:textSize="14dp" />
 
                     <TextView
@@ -85,13 +87,13 @@
 
                     <TextView
                         android:id="@+id/tv_Bvol"
+                        android:background="@drawable/textdrawble"
+                        android:textColor="@color/textcolor"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textColor="@color/white"
                         android:textSize="14dp" />
 
                     <TextView
@@ -118,13 +120,13 @@
 
                     <TextView
                         android:id="@+id/tv_Cvol"
+                        android:background="@drawable/textdrawble"
+                        android:textColor="@color/textcolor"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textColor="@color/white"
                         android:textSize="14dp" />
 
                     <TextView
@@ -163,10 +165,11 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-                        android:background="@color/colorPrimary"
+
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textColor="@color/white"
+                        android:background="@drawable/textdrawble"
+                        android:textColor="@color/textcolor"
                         android:textSize="14dp" />
 
                     <TextView
@@ -193,14 +196,14 @@
                         android:textSize="14dp" />
 
                     <TextView
+                        android:background="@drawable/textdrawble"
+                        android:textColor="@color/textcolor"
                         android:id="@+id/tv_Bcur"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textColor="@color/white"
                         android:textSize="14dp" />
 
                     <TextView
@@ -227,14 +230,14 @@
                         android:textSize="14dp" />
 
                     <TextView
+                        android:background="@drawable/textdrawble"
+                        android:textColor="@color/textcolor"
                         android:id="@+id/tv_Ccur"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textColor="@color/white"
                         android:textSize="14dp" />
 
                     <TextView
@@ -271,20 +274,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="AB线电压:"
+                    android:text="AB线电压: "
                     android:textColor="@color/black3"
                     android:textSize="14dp" />
 
                 <TextView
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:id="@+id/tv_ABvol"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -305,20 +308,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="BC线电压:"
+                    android:text="BC线电压: "
                     android:textColor="@color/black3"
                     android:textSize="14dp" />
 
                 <TextView
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:id="@+id/tv_BCvo"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -339,20 +342,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="CA线电压:"
+                    android:text="CA线电压: "
                     android:textColor="@color/black3"
                     android:textSize="14dp" />
 
                 <TextView
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:id="@+id/tv_CAvo"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -378,14 +381,14 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:id="@+id/tv_Apap"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -411,14 +414,14 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:id="@+id/tv_Bpap"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -444,14 +447,14 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:id="@+id/tv_Cpap"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -478,14 +481,14 @@
 
                 <TextView
                     android:id="@+id/tv_Tpap"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -512,13 +515,13 @@
 
                 <TextView
                     android:id="@+id/tv_Aprp"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -545,13 +548,13 @@
 
                 <TextView
                     android:id="@+id/tv_Bprp"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -578,13 +581,13 @@
 
                 <TextView
                     android:id="@+id/tv_Cprp"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -611,14 +614,14 @@
 
                 <TextView
                     android:id="@+id/tv_Tprp"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -645,13 +648,13 @@
 
                 <TextView
                     android:id="@+id/tv_Appf"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -679,14 +682,14 @@
 
                 <TextView
                     android:id="@+id/tv_Bppf"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -714,13 +717,13 @@
 
                 <TextView
                     android:id="@+id/tv_Cppf"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
@@ -749,13 +752,13 @@
                 <TextView
                     android:layout_marginLeft="10dp"
                     android:id="@+id/tv_Tppf"
+                    android:background="@drawable/textdrawble"
+                    android:textColor="@color/textcolor"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <TextView
