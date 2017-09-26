@@ -1,4 +1,4 @@
-package cn.meiqu.lainmonitor.aui.system.manage;
+package cn.meiqu.lainmonitor.aui.env.thunder;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -20,37 +20,34 @@ import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.httpGet.HttpGetController;
 import cn.meiqu.baseproject.util.StringUtil;
 import cn.meiqu.lainmonitor.R;
-import cn.meiqu.lainmonitor.adapter.Recycle80Adapter;
+import cn.meiqu.lainmonitor.adapter.RecycleTempManageAdapter;
 import cn.meiqu.lainmonitor.aui.FragmentAlert;
-import cn.meiqu.lainmonitor.bean.Device;
-import cn.meiqu.lainmonitor.bean.Device80;
 import cn.meiqu.lainmonitor.bean.Ip;
 import cn.meiqu.lainmonitor.bean.Location;
+import cn.meiqu.lainmonitor.bean.TempReal;
+
+import static cn.meiqu.lainmonitor.aui.FragmentControl.number2;
 
 /**
  * Created by Fatel on 16-5-10.
  */
-public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnItemClickListner {
-    String action_getData = className + API.get8060;
-    String action_add = className + API.add8060;
-    String action_edt = className + API.edt8060;
-    String action_del = className + API.del8060;
-    String action_getIP = className + API.get8060IP;
-    String action_getDevice = className + API.get8060Device;
-    String action_getLocation = className + API.get8060Location;
-    ArrayList<Device80> Device80s = new ArrayList<>();
+public class FragmentThunderManage extends FragmentAlert implements RecycleTempManageAdapter.OnItemClickListner {
+    String action_getData = className + API.getTempManage;
+    String action_add = className + API.addTemp;
+    String action_edt = className + API.edtTemp;
+    String action_del = className + API.delTemp;
+    String action_getIP = className + API.getTempIP1;
+    String action_getLocation = className + API.getTemplocations;
+    ArrayList<TempReal> Temps = new ArrayList<>();
     ArrayList<Location> locations = new ArrayList<>();
     ArrayList<Ip> ips = new ArrayList<>();
-    ArrayList<Device> devices = new ArrayList<>();
-    Recycle80Adapter adapter;
+    RecycleTempManageAdapter adapter;
     String[] addrs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
-    String[] gallarys = new String[]{"RL1", "RL2", "RL3", "RL4"};
-
     @Override
     public RecyclerView.Adapter getAdapter() {
-        adapter = new Recycle80Adapter(getActivity(), Device80s);
+        adapter = new RecycleTempManageAdapter(getActivity(), Temps);
         adapter.setOnItemClickListner(this);
-        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_8060_top,null));
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_top,null));
         return adapter;
     }
 
@@ -58,10 +55,9 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
     public View getTopView() {
         requestLocations();
         requestIps();
-        requestDevices();
         viewGBody.getChildAt(0).setVisibility(View.GONE);
         mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_8060_top1, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_top1, null);
     }
 
     @Override
@@ -71,36 +67,25 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
 
     @Override
     public String[] getActions() {
-        return new String[]{action_getData, action_add, action_del, action_edt, action_getIP, action_getDevice, action_getLocation};
+        return new String[]{action_getData, action_add, action_del, action_edt, action_getIP, action_getLocation};
     }
 
     @Override
     public void requestData(String start, String end, String deviceId) {
         showProgressDialog();
-        HttpGetController.getInstance().get8060List(className);
+        HttpGetController.getInstance().getTempManageList(className);
     }
 
     public void handleData(String data) {
-        ArrayList<Device80> temps = new Gson().fromJson(data, new TypeToken<ArrayList<Device80>>() {
+        ArrayList<TempReal> temps = new Gson().fromJson(data, new TypeToken<ArrayList<TempReal>>() {
         }.getType());
-        Device80s.clear();
-        Device80s.addAll(temps);
+        Temps.clear();
+        Temps.addAll(temps);
         adapter.notifyDataSetChanged();
     }
 
-    public void requestDevices() {
-        HttpGetController.getInstance().get8060DeviceList(className);
-    }
-
-    public void handleDevices(String data) {
-        ArrayList<Device> temps = new Gson().fromJson(data, new TypeToken<ArrayList<Device>>() {
-        }.getType());
-        devices.clear();
-        devices.addAll(temps);
-    }
-
     public void requestLocations() {
-        HttpGetController.getInstance().get8060LocationList(className);
+        HttpGetController.getInstance().getTempLocationsList(className);
     }
 
     public void handleLocations(String data) {
@@ -111,7 +96,7 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
     }
 
     public void requestIps() {
-        HttpGetController.getInstance().get8060IpList(className);
+        HttpGetController.getInstance().getTempIpList1(className,number2);
     }
 
     public void handleIps(String data) {
@@ -121,19 +106,19 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
         ips.addAll(temps);
     }
 
-    public void requestAdd(String address, String gallery, String location, String ipAddress, String number, String name) {
+    public void requestAdd(String deviceAddress, String deviceLocation, String ipAddress, String deviceName, String maxTemp, String minTemp, String maxHum, String minHum, String interval) {
         showProgressDialog();
-        HttpGetController.getInstance().add8060(address, gallery, location, ipAddress, number, name, className);
+        HttpGetController.getInstance().addTempManage(deviceAddress, deviceLocation, ipAddress, deviceName, maxTemp, minTemp, maxHum, minHum, interval, className);
     }
 
-    public void requestEdt(String id, String name) {
+    public void requestEdt(String id, String address, String name, String maxTemp, String minTemp, String maxHum, String minHum, String interval) {
         showProgressDialog();
-        HttpGetController.getInstance().edt8060(id, name, className);
+        HttpGetController.getInstance().edtTempManage(id, address, name, maxTemp, minTemp, maxHum, minHum, interval, className);
     }
 
     //
     public void requestDel(String id, String ip) {
-        HttpGetController.getInstance().del8060(id, ip, className);
+        HttpGetController.getInstance().delTempManage(id, ip, className);
     }
 
     public void handleEdt(String data) {
@@ -152,8 +137,6 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
         if (getHttpStatus(data)) {
             if (action.equals(action_add) || action.equals(action_del) || action.equals(action_edt)) {
                 handleEdt(data);
-            } else if (action.equals(action_getDevice)) {
-                handleDevices(data);
             } else if (action.equals(action_getLocation)) {
                 handleLocations(data);
             } else if (action.equals(action_getIP)) {
@@ -175,41 +158,46 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
     }
 
     int currentAddr = 0;
-    int currentGallary = 0;
-    int currentLocation = 0;
+    int currentTemp = 0;
     int currentIp = 0;
-    int currentDevice = 0;
 
     public void showEdtDialog(final int position) {
-        View body = LayoutInflater.from(getActivity()).inflate(R.layout.layout_8060_input, null);
-
+        View body = LayoutInflater.from(getActivity()).inflate(R.layout.layout_temp_input, null);
         final EditText mEdtAddress;
-        final EditText mEdtGallary;
         final EditText mEdtLocation;
         final EditText mEdtIp;
-        final EditText mEdtDevice;
         final EditText mEdtName;
+        final EditText mEdtMaxTemp;
+        final EditText mEdtMinTemp;
+        final EditText mEdtMaxHum;
+        final EditText mEdtMinHum;
+        final EditText mEdtInterval;
 
         mEdtAddress = (EditText) body.findViewById(R.id.edt_address);
-        mEdtGallary = (EditText) body.findViewById(R.id.edt_gallary);
         mEdtLocation = (EditText) body.findViewById(R.id.edt_location);
         mEdtIp = (EditText) body.findViewById(R.id.edt_ip);
-        mEdtDevice = (EditText) body.findViewById(R.id.edt_device);
         mEdtName = (EditText) body.findViewById(R.id.edt_name);
+        mEdtMaxTemp = (EditText) body.findViewById(R.id.edt_maxTemp);
+        mEdtMinTemp = (EditText) body.findViewById(R.id.edt_minTemp);
+        mEdtMaxHum = (EditText) body.findViewById(R.id.edt_maxHum);
+        mEdtMinHum = (EditText) body.findViewById(R.id.edt_minHum);
+        mEdtInterval = (EditText) body.findViewById(R.id.edt_interval);
 
         String title = "设备修改";
         if (position != -1) {
-            final Device80 Device80 = Device80s.get(position);
-            mEdtAddress.setText("" + Device80.getAddress());
-            mEdtGallary.setText("" + Device80.getGallery());
-            mEdtLocation.setText("" + Device80.getDeviceLocationPojo().getDlName());
-            mEdtIp.setText("" + Device80.getIpPort());
-            mEdtDevice.setText("" + Device80.getDeviceName());
-            mEdtName.setText(Device80.getName() + "");
+            final TempReal Temp = Temps.get(position);
+            mEdtAddress.setText("" + Temp.getEhmAddress());
+            mEdtLocation.setText("" + Temp.getDeviceLocationPojo().getDlName());
+            mEdtIp.setText("" + Temp.getIpPort());
+            mEdtName.setText(Temp.getEhmName() + "");
+            mEdtMaxTemp.setText("" + Temp.getEhmMaxTemp());
+            mEdtMinTemp.setText("" + Temp.getEhmMinTemp());
+            mEdtMaxHum.setText("" + Temp.getEhmMaxHum());
+            mEdtMinHum.setText("" + Temp.getEhmMinTemp());
+            mEdtInterval.setText("" + Temp.getEhmInterval());
         } else {
             title = "设备添加";
             mEdtAddress.setText("" + addrs[0]);
-            mEdtGallary.setText("" + gallarys[0]);
             if (locations.isEmpty()) {
                 requestLocations();
             } else {
@@ -220,16 +208,9 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
             } else {
                 mEdtIp.setText("" + ips.get(0).getDiAddress() + ":" + ips.get(0).getDiPort());
             }
-            if (devices.isEmpty()) {
-                requestDevices();
-            } else {
-                mEdtDevice.setText("" + devices.get(0).getName());
-            }
             currentAddr = 0;
-            currentDevice = 0;
-            currentGallary = 0;
             currentIp = 0;
-            currentLocation = 0;
+            currentTemp = 0;
             mEdtLocation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -238,13 +219,13 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
                         requestLocations();
                         return;
                     }
-                    for (int i = 0; i < locations.size(); i++) {
+                    for (int i = 0; i < names.length; i++) {
                         names[i] = locations.get(i).getDlName();
                     }
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setSingleChoiceItems(names, currentLocation, new DialogInterface.OnClickListener() {
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setSingleChoiceItems(names, currentTemp, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            currentLocation = which;
+                            currentTemp = which;
                             mEdtLocation.setText(locations.get(which).getDlName() + "");
                             dialog.dismiss();
                         }
@@ -259,6 +240,7 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             currentAddr = which;
+
                             mEdtAddress.setText(addrs[which] + "");
                             dialog.dismiss();
                         }
@@ -266,22 +248,6 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
                     alertDialog.show();
                 }
             });
-            mEdtGallary.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setSingleChoiceItems(gallarys, currentGallary, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            currentGallary = which;
-                            mEdtGallary.setText(gallarys[which] + "");
-                            dialog.dismiss();
-                        }
-                    }).create();
-                    alertDialog.show();
-                }
-            });
-
-
             mEdtIp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -305,28 +271,6 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
                 }
             });
 
-            mEdtDevice.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final String[] names = new String[devices.size()];
-                    if (names.length == 0) {
-                        requestDevices();
-                        return;
-                    }
-                    for (int i = 0; i < devices.size(); i++) {
-                        names[i] = devices.get(i).getName();
-                    }
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setSingleChoiceItems(names, currentDevice, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            currentDevice = which;
-                            mEdtDevice.setText(devices.get(which).getName());
-                            dialog.dismiss();
-                        }
-                    }).create();
-                    alertDialog.show();
-                }
-            });
         }
         AlertDialog dialog = new AlertDialog.Builder(getActivity()).setTitle(title).setPositiveButton("提交", new DialogInterface.OnClickListener() {
             @Override
@@ -337,9 +281,18 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
                     return;
                 }
                 if (position == -1) {
-                    requestAdd(addrs[currentAddr] + "", gallarys[currentGallary] + "", locations.get(currentLocation).getDlId() + "", ips.get(currentIp).getDiId() + "", devices.get(currentDevice).getNumber() + "", name);
+
+                    for (int i = 0; i < Temps.size(); i++) {
+                        if (Temps.get(i).getEhmAddress()==Integer.parseInt(addrs[currentAddr])){
+                            toast("设备地址已经存在");
+                            return;
+                        }
+                    }
+                        requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "",ips.get(currentIp).getDiId()+"", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
+
+
                 } else {
-                    requestEdt(Device80s.get(position).getId() + "", name);
+                    requestEdt(Temps.get(position).getEhmId() + "", Temps.get(position).getDeviceLocationPojo().getDlId() + "", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
                 }
             }
         }).setNegativeButton("取消", null).setView(body).show();
@@ -352,7 +305,7 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
 
     @Override
     public void onItemDel(final int position) {
-        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setMessage("是否要删除" + Device80s.get(position).getName() + "?").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setMessage("是否要删除" + Temps.get(position).getEhmName() + "?").setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -360,7 +313,7 @@ public class Fragment8060 extends FragmentAlert implements Recycle80Adapter.OnIt
         }).setPositiveButton("是", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                requestDel(Device80s.get(position).getId() + "", Device80s.get(position).getIp() + "");
+                requestDel(Temps.get(position).getEhmId() + "", Temps.get(position).getIp() + "");
             }
         }).show();
     }

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import cn.meiqu.baseproject.view.superrecyclerview.SuperRecyclerView;
 
 /**
- * Created by Administrator on 2017/9/1.
+ * Created by zsp on 2017/9/1.
  */
 
 public class NoSuperRecycleView extends SuperRecyclerView {

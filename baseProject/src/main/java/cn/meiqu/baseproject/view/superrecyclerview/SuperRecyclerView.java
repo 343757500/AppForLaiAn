@@ -289,9 +289,9 @@ public class SuperRecyclerView extends FrameLayout implements View.OnClickListen
                 mProgress.setVisibility(View.GONE);
                 isLoadingMore = false;
                 mPtrLayout.setRefreshing(false);
-                if (mRecycler.getAdapter().getItemCount() == 0 && mEmptyId != 0) {
+                if (mRecycler.getAdapter().getItemCount() <= 1 ) {
                     mEmpty.setVisibility(View.VISIBLE);
-                } else if (mEmptyId != 0) {
+                } else {
                     mEmpty.setVisibility(View.GONE);
                 }
             }

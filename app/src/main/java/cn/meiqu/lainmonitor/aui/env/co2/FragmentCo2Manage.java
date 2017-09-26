@@ -46,6 +46,7 @@ public class FragmentCo2Manage extends FragmentAlert implements RecycleCo2Manage
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleCo2ManageAdapter(getActivity(), Co2s);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_co2_top1,null));
         return adapter;
     }
 

@@ -73,6 +73,9 @@
         <activity android:name=".activity.PersonalInfomationActivity"
             android:theme="@style/FullImmerseMode"></activity>
 
+        <activity android:name=".aui.env.conditoning.ConditionActivity"
+            android:theme="@style/FullImmerseMode"></activity>
+
 
     </application>
 

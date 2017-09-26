@@ -43,6 +43,7 @@ public class FragmentIp extends FragmentAlert implements RecycleIpAdapter.OnItem
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleIpAdapter(getActivity(), Ips);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_ip_top,null));
         return adapter;
     }
 
@@ -51,7 +52,7 @@ public class FragmentIp extends FragmentAlert implements RecycleIpAdapter.OnItem
         requestIpSetion();
         viewGBody.getChildAt(0).setVisibility(View.GONE);
         mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_ip_top, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_ip_top1, null);
     }
 
     @Override

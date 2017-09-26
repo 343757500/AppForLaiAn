@@ -59,7 +59,7 @@ public class RecycleAlertType2Adapter extends BaseRecycleAdapter {
         if(mHeaderView != null && viewType == TYPE_HEADER) {
             return new Holder(mHeaderView);
         }else {
-            return new Holder(View.inflate(mContent, R.layout.recycle_alart_type2, null));
+            return new Holder(View.inflate(mContent, R.layout.recycle_wateralart_message, null));
         }
     }
 
@@ -70,7 +70,7 @@ public class RecycleAlertType2Adapter extends BaseRecycleAdapter {
             return;
         }
         int  pos = getRealPosition(holder);
-        ((RecycleTempManageAdapter.Holder) holder).instanceView(pos);
+        ((RecycleAlertType2Adapter.Holder) holder).instanceView(pos);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class RecycleAlertType2Adapter extends BaseRecycleAdapter {
         @Override
         public void onClick(View v) {
             if (getClickListener() != null) {
-                getClickListener().OnRecycleItemClick(getPosition());
+                getClickListener().OnRecycleItemClick(getPosition()-1);
             }
         }
     }

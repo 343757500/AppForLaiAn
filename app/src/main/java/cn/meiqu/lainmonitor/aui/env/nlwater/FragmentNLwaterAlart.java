@@ -31,13 +31,13 @@ public class FragmentNLwaterAlart extends FragmentAlert implements BaseOnRecycle
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleAlertType2Adapter(getActivity(), AlertType2s);
         adapter.setClickListener(this);
-        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.recycle_alart_type2,null));
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.recycle_wateralart_type2,null));
         return adapter;
     }
 
     @Override
     public View getTopView() {
-        return LayoutInflater.from(getActivity()).inflate(R.layout.recycle_alart_type3, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.recycle_wateralart_type3, null);
     }
 
     @Override

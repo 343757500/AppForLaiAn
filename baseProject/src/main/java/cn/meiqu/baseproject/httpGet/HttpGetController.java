@@ -73,6 +73,14 @@ public class HttpGetController {
         post(API.getHomePage, getTokenBuild(), className);
     }
 
+    public void getCondition(String className) {
+        StringBuilder params = new StringBuilder();
+        params.append("Ipid="+14);
+        get(API.getCondition,params.toString(),className);
+
+
+    }
+
     public void getHomeChildPage(String number, String className) {
         FormEncodingBuilder builder = getTokenBuild();
         builder.add("number", number);

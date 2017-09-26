@@ -1,5 +1,6 @@
 package cn.meiqu.lainmonitor.aui.env;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import cn.meiqu.lainmonitor.aui.env.airJ.FragmentAirJAlart;
 import cn.meiqu.lainmonitor.aui.env.co2.FragmentCo2Alart;
 import cn.meiqu.lainmonitor.aui.env.co2.FragmentCo2Manage;
 import cn.meiqu.lainmonitor.aui.env.co2.FragmentCo2Real;
+import cn.meiqu.lainmonitor.aui.env.conditoning.ConditionActivity;
+import cn.meiqu.lainmonitor.aui.env.conditoning.FragmentConditonong;
 import cn.meiqu.lainmonitor.aui.env.dotwater.FragmentDotWaterAlart;
 import cn.meiqu.lainmonitor.aui.env.dotwater.FragmentDotWaterReal;
 import cn.meiqu.lainmonitor.aui.env.dust.FragmentDustReal;
@@ -31,9 +34,12 @@ import cn.meiqu.lainmonitor.aui.env.temp.FragmentTempChart;
 import cn.meiqu.lainmonitor.aui.env.temp.FragmentTempManage;
 import cn.meiqu.lainmonitor.aui.env.temp.FragmentTempReal;
 import cn.meiqu.lainmonitor.aui.env.thunder.FragmentThunderAlart;
+import cn.meiqu.lainmonitor.aui.env.thunder.FragmentThunderManage;
 import cn.meiqu.lainmonitor.aui.env.thunder.FragmentThunderReal;
 import cn.meiqu.lainmonitor.aui.env.wet.FragmentWet;
+import cn.meiqu.lainmonitor.aui.operation.FragmentOper;
 import cn.meiqu.lainmonitor.bean.ThirdPage;
+import cn.meiqu.lainmonitor.hkvideo.HKControlActivity;
 
 /**
  * Created by Fatel on 16-5-24.
@@ -127,6 +133,9 @@ public class FragmentEnv extends FragmentControl {
                 fragments.add(new FragmentDustReal());
             if (thirdPages.size() >= 2)
                 fragments.add(new FragmentThunderAlart());
+
+            if (thirdPages.size() >= 3)
+                fragments.add(new FragmentThunderManage());
         }
 
 
@@ -140,11 +149,9 @@ public class FragmentEnv extends FragmentControl {
 
 
         //中央空调
-        else if (number2.equals("12")) {
-            if (thirdPages.size() >= 1)
-                fragments.add(new FragmentThunderReal());
-            if (thirdPages.size() >= 2)
-                fragments.add(new FragmentThunderAlart());
+        else if (number2.equals("14")) {
+            startActivity(new Intent(getActivity(), ConditionActivity.class));
+            getActivity().finish();
         }
     }
 

@@ -1,70 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="horizontal"
-    android:paddingBottom="4dp"
-    android:paddingTop="4dp">
+   >
+
+    <LinearLayout
+        android:background="#1d2635"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
+
 
     <TextView
         android:id="@+id/tv_id"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:padding="6dp"
         android:singleLine="true"
+        android:paddingBottom="6dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="6dp"
         android:text="序列号"
         android:textColor="@color/white"
-        android:textSize="14dp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:padding="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="6dp"
         android:singleLine="true"
         android:text="所在位置"
         android:textColor="@color/white"
-        android:textSize="14dp" />
+        android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
 
     <cn.meiqu.baseproject.view.RippleView
         android:id="@+id/ripple_edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        >
 
         <TextView
             android:id="@+id/tv_edt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:padding="6dp"
+            android:paddingBottom="6dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="6dp"
             android:singleLine="true"
             android:text="修改"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="12sp" />
     </cn.meiqu.baseproject.view.RippleView>
 
     <cn.meiqu.baseproject.view.RippleView
         android:id="@+id/ripple_del"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        >
 
         <TextView
             android:id="@+id/tv_del"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:padding="6dp"
+            android:paddingBottom="6dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="6dp"
             android:singleLine="true"
             android:text="删除"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="12sp" />
     </cn.meiqu.baseproject.view.RippleView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>

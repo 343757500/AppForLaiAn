@@ -9,7 +9,8 @@
 
     <TextView
         android:id="@+id/tv_addr"
-        android:layout_width="25dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -22,8 +23,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:id="@+id/tv_gallery"
-        android:layout_width="25dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -36,8 +38,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:id="@+id/tv_location"
-        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -50,8 +53,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:id="@+id/tv_deviceName"
-        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -64,8 +68,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:id="@+id/tv_name"
-        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -78,10 +83,10 @@
         android:textSize="8dp" />
 
     <TextView
-        android:id="@+id/tv_ip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_width="0dp"
+        android:id="@+id/tv_ip"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="2dp"
@@ -93,7 +98,8 @@
         android:textSize="8dp" />
 
     <LinearLayout
-        android:layout_width="70dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">

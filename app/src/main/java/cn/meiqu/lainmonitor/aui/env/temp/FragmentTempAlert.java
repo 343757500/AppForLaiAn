@@ -31,6 +31,7 @@ public class FragmentTempAlert extends FragmentAlert implements BaseOnRecycleCli
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleTempAlertAdapter(getActivity(), TempAlarts);
         adapter.setClickListener(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.recycle_alart_type3,null));
         return adapter;
     }
 

@@ -8,6 +8,8 @@ import cn.meiqu.baseproject.util.StringUtil;
 public class API {
     public static String port = "8090";
     public static String getHomePage = "ktr-mrms/queHeadJson.html";
+
+    public static String getCondition = "ktr-mrms/getParametersJson.html";
     public static String getHomeChildPage = "ktr-mrms/queMonitorJson.html";
     public static String getHomeChildThirdPage = "ktr-mrms/queMainMenuJspn.html";
     public static String login = "ktr-mrms/loginJson.html";

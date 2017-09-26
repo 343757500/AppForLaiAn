@@ -18,6 +18,36 @@ public class RecycleAlartAdapter extends BaseRecycleAdapter {
     private Context mContent;
     private ArrayList<Alart> Alarts;
 
+
+    private View mHeaderView;
+
+
+    public static final int TYPE_HEADER = 0;
+    public static final int TYPE_NORMAL = 1;
+
+
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mHeaderView == null) return TYPE_NORMAL;
+        if(position == 0) return TYPE_HEADER;
+        return TYPE_NORMAL;
+    }
+
+
+
+    public void setHeaderView(View headerView) {
+        mHeaderView = headerView;
+        notifyItemInserted(0);
+    }
+
+    public View getHeaderView() {
+        return mHeaderView;
+    }
+
+
+
     public interface OnItemClickListner {
         public void onItemEmail(int position);
 
@@ -49,25 +79,35 @@ public class RecycleAlartAdapter extends BaseRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(View.inflate(mContent, R.layout.recycle_alart, null));
+        if(mHeaderView != null && viewType == TYPE_HEADER) {
+            return new Holder(mHeaderView);
+        }else {
+            return new Holder(View.inflate(mContent, R.layout.recycle_alart, null));
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((Holder) holder).instanceView(position);
+
+        if (getItemViewType(position)==TYPE_HEADER){
+            return;
+        }
+        int  pos = getRealPosition(holder);
+        ((Holder) holder).instanceView(pos);
     }
+
+    public int getRealPosition(RecyclerView.ViewHolder holder) {
+        int position = holder.getLayoutPosition();
+        return mHeaderView == null ? position : position - 1;
+    }
+
 
     @Override
     public int getItemCount() {
-        return Alarts.size();
+        return mHeaderView == null ? Alarts.size() : Alarts.size() + 1;
     }
 
     class Holder extends BaseHolder implements View.OnClickListener {
-        public Holder(View itemView) {
-            super(itemView);
-            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
-
         private TextView mTvName;
         private TextView mTvTime1;
         private TextView mTvTime2;
@@ -78,8 +118,13 @@ public class RecycleAlartAdapter extends BaseRecycleAdapter {
         private TextView mTvPhoneStatus;
         private TextView mTvInterval;
         private TextView mTvEdt;
+        public Holder(View itemView) {
+            super(itemView);
+            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            if (itemView==mHeaderView){
+                return;
+            }
 
-        public void assignViews() {
             mTvName = (TextView) findViewById(R.id.tv_name);
             mTvTime1 = (TextView) findViewById(R.id.tv_time1);
             mTvTime2 = (TextView) findViewById(R.id.tv_time2);
@@ -103,6 +148,12 @@ public class RecycleAlartAdapter extends BaseRecycleAdapter {
             mTvPhoneStatus.setOnClickListener(this);
             mTvEdt.setOnClickListener(this);
             mTvEdt.setText("更新");
+        }
+
+
+
+        public void assignViews() {
+
         }
 
 
@@ -154,15 +205,15 @@ public class RecycleAlartAdapter extends BaseRecycleAdapter {
         public void onClick(View v) {
             if (getOnItemClickListner() != null) {
                 if (v.getId() == mTvEmailStatus.getId()) {
-                    getOnItemClickListner().onItemEmail(getPosition());
+                    getOnItemClickListner().onItemEmail(getPosition()-1);
                 } else if (v.getId() == mTvPhoneStatus.getId()) {
-                    getOnItemClickListner().onItemPhone(getPosition());
+                    getOnItemClickListner().onItemPhone(getPosition()-1);
                 } else if (v.getId() == mTvSmsStatus.getId()) {
-                    getOnItemClickListner().onItemMsm(getPosition());
+                    getOnItemClickListner().onItemMsm(getPosition()-1);
                 } else if (v.getId() == mTvSoundStatus.getId()) {
-                    getOnItemClickListner().onItemLight(getPosition());
+                    getOnItemClickListner().onItemLight(getPosition()-1);
                 } else if (v.getId() == mTvEdt.getId()) {
-                    getOnItemClickListner().onItemEdit(getPosition());
+                    getOnItemClickListner().onItemEdit(getPosition()-1);
                 }
             }
         }

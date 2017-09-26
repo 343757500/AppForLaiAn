@@ -18,6 +18,40 @@ public class Recycle80Adapter extends BaseRecycleAdapter {
     private Context mContent;
     private ArrayList<Device80> Device80s;
 
+
+
+
+    private View mHeaderView;
+
+
+    public static final int TYPE_HEADER = 0;
+    public static final int TYPE_NORMAL = 1;
+
+
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mHeaderView == null) return TYPE_NORMAL;
+        if(position == 0) return TYPE_HEADER;
+        return TYPE_NORMAL;
+    }
+
+
+
+    public void setHeaderView(View headerView) {
+        mHeaderView = headerView;
+        notifyItemInserted(0);
+    }
+
+    public View getHeaderView() {
+        return mHeaderView;
+    }
+
+
+
+
+
     public interface OnItemClickListner {
         public void onItemDel(int position);
 
@@ -43,25 +77,35 @@ public class Recycle80Adapter extends BaseRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(View.inflate(mContent, R.layout.recycle_8060, null));
+
+        if(mHeaderView != null && viewType == TYPE_HEADER) {
+            return new Holder(mHeaderView);
+        }else {
+            return new Holder(View.inflate(mContent, R.layout.recycle_8060, null));
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((Holder) holder).instanceView(position);
+
+        if (getItemViewType(position)==TYPE_HEADER){
+            return;
+        }
+        int  pos = getRealPosition(holder);
+        ((Holder) holder).instanceView(pos);
+    }
+
+    public int getRealPosition(RecyclerView.ViewHolder holder) {
+        int position = holder.getLayoutPosition();
+        return mHeaderView == null ? position : position - 1;
     }
 
     @Override
     public int getItemCount() {
-        return Device80s.size();
+        return mHeaderView == null ? Device80s.size() : Device80s.size() + 1;
     }
 
     class Holder extends BaseHolder implements View.OnClickListener {
-        public Holder(View itemView) {
-            super(itemView);
-            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
-
         private TextView mTvAddr;
         private TextView mTvGallery;
         private TextView mTvLocation;
@@ -70,8 +114,12 @@ public class Recycle80Adapter extends BaseRecycleAdapter {
         private TextView mTvIp;
         private TextView mTvEdt;
         private TextView mTvDel;
-
-        public void assignViews() {
+        public Holder(View itemView) {
+            super(itemView);
+            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            if (itemView==mHeaderView){
+                return;
+            }
             mTvAddr = (TextView) findViewById(R.id.tv_addr);
             mTvGallery = (TextView) findViewById(R.id.tv_gallery);
             mTvLocation = (TextView) findViewById(R.id.tv_location);
@@ -91,6 +139,12 @@ public class Recycle80Adapter extends BaseRecycleAdapter {
             mTvDel.setBackgroundColor(mTvName.getResources().getColor(R.color.colorAccent));
             mTvEdt.setOnClickListener(this);
             mTvDel.setOnClickListener(this);
+        }
+
+
+
+        public void assignViews() {
+
         }
 
         @Override
@@ -114,9 +168,9 @@ public class Recycle80Adapter extends BaseRecycleAdapter {
         public void onClick(View v) {
             if (getOnItemClickListner() != null) {
                 if (v.getId() == mTvEdt.getId()) {
-                    getOnItemClickListner().onItemEdit(getPosition());
+                    getOnItemClickListner().onItemEdit(getPosition()-1);
                 } else if (v.getId() == mTvDel.getId()) {
-                    getOnItemClickListner().onItemDel(getPosition());
+                    getOnItemClickListner().onItemDel(getPosition()-1);
                 }
             }
         }

@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <HorizontalScrollView
+        <cn.meiqu.lainmonitor.view.NewHorizontalScrollView
             android:fillViewport="true"
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             layout="@layout/layout_recycle_base" />
 
         </RelativeLayout>
-        </HorizontalScrollView>
+        </cn.meiqu.lainmonitor.view.NewHorizontalScrollView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

@@ -37,6 +37,7 @@ public class FragmentAlart extends FragmentAlert implements RecycleAlartAdapter.
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleAlartAdapter(getActivity(), Alarts);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_alart_top,null));
         return adapter;
     }
 
@@ -44,7 +45,7 @@ public class FragmentAlart extends FragmentAlert implements RecycleAlartAdapter.
     public View getTopView() {
         viewGBody.getChildAt(0).setVisibility(View.GONE);
 //        mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_alart_top, null);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_alart_top1, null);
     }
 
     @Override

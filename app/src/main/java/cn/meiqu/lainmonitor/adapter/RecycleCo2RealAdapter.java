@@ -71,9 +71,7 @@ public class RecycleCo2RealAdapter extends BaseRecycleAdapter {
             mTvName.setText(co2.getName() + "");
             mTvAlert.setText(co2.getAlarmData() + "PM");
             mTvReal.setText(co2.getCurrentData() + "PM");
-            mTvAlert.setBackgroundColor(mTvReal.getResources().getColor(R.color.colorPrimary));
             if (co2.getCurrentData() <= co2.getAlarmData()) {
-                mTvReal.setBackgroundColor(mTvReal.getResources().getColor(R.color.colorPrimary));
             } else {
                 mTvReal.setBackgroundColor(mTvReal.getResources().getColor(R.color.red));
             }

@@ -19,6 +19,54 @@ public class RecycleTempAlertAdapter extends BaseRecycleAdapter {
     private ArrayList<TempAlart> TempAlarts;
 
 
+
+    private View mHeaderView;
+
+
+    public static final int TYPE_HEADER = 0;
+    public static final int TYPE_NORMAL = 1;
+
+    public interface OnItemClickListner {
+        public void onItemDel(int position);
+
+        public void onItemEdit(int position);
+
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mHeaderView == null) return TYPE_NORMAL;
+        if(position == 0) return TYPE_HEADER;
+        return TYPE_NORMAL;
+    }
+
+
+
+    public void setHeaderView(View headerView) {
+            mHeaderView = headerView;
+            notifyItemInserted(0);
+
+    }
+
+    public View getHeaderView() {
+        return mHeaderView;
+    }
+
+
+
+    public RecycleTempAlertAdapter.OnItemClickListner getOnItemClickListner() {
+        return onItemClickListner;
+    }
+
+    public void setOnItemClickListner(RecycleTempAlertAdapter.OnItemClickListner onItemClickListner) {
+        this.onItemClickListner = onItemClickListner;
+    }
+
+    private RecycleTempAlertAdapter.OnItemClickListner onItemClickListner;
+
+
+
     public RecycleTempAlertAdapter(Context mContent, ArrayList<TempAlart> TempAlarts) {
         this.mContent = mContent;
         this.TempAlarts = TempAlarts;
@@ -27,32 +75,52 @@ public class RecycleTempAlertAdapter extends BaseRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(View.inflate(mContent, R.layout.recycle_alart_type1, null));
+
+        if(mHeaderView != null && viewType == TYPE_HEADER) {
+            return new Holder(mHeaderView);
+        }else {
+            return new Holder(View.inflate(mContent, R.layout.recycle_alart_message, null));
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((Holder) holder).instanceView(position);
+
+        if (getItemViewType(position)==TYPE_HEADER){
+            return;
+        }
+        int  pos = getRealPosition(holder);
+        ((RecycleTempAlertAdapter.Holder) holder).instanceView(pos);
+
     }
+
+    public int getRealPosition(RecyclerView.ViewHolder holder) {
+        int position = holder.getLayoutPosition();
+        return mHeaderView == null ? position : position - 1;
+
+
+    }
+
 
     @Override
     public int getItemCount() {
-        return TempAlarts.size();
+        return mHeaderView == null ? TempAlarts.size() : TempAlarts.size() + 1;
+
     }
 
     class Holder extends BaseHolder implements View.OnClickListener {
-        public Holder(View itemView) {
-            super(itemView);
-            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            itemView.setOnClickListener(this);
-        }
 
         private TextView mTvAddr;
         private TextView mTvName;
         private TextView mTvInfo;
         private TextView mTvTime;
+        public Holder(View itemView) {
+            super(itemView);
 
-        public void assignViews() {
+            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            if (itemView==mHeaderView){
+                return;
+            }
             mTvAddr = (TextView) findViewById(R.id.tv_addr);
             mTvName = (TextView) findViewById(R.id.tv_name);
             mTvInfo = (TextView) findViewById(R.id.tv_info);
@@ -62,6 +130,16 @@ public class RecycleTempAlertAdapter extends BaseRecycleAdapter {
             mTvName.setTextColor(mTvAddr.getResources().getColor(R.color.black3));
             mTvInfo.setTextColor(mTvAddr.getResources().getColor(R.color.black3));
             mTvTime.setTextColor(mTvAddr.getResources().getColor(R.color.black3));
+
+            itemView.setOnClickListener(this);
+
+
+        }
+
+
+
+        public void assignViews() {
+
 
         }
 
@@ -84,7 +162,7 @@ public class RecycleTempAlertAdapter extends BaseRecycleAdapter {
         @Override
         public void onClick(View v) {
             if (getClickListener() != null) {
-                getClickListener().OnRecycleItemClick(getPosition());
+                getClickListener().OnRecycleItemClick(getPosition()-1);
             }
         }
     }

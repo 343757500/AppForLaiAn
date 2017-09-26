@@ -39,6 +39,7 @@ public class FragmentLocation extends FragmentAlert implements RecycleLocationAd
     public RecyclerView.Adapter getAdapter() {
         adapter = new RecycleLocationAdapter(getActivity(), Locations);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.recycle_location1,null));
         return adapter;
     }
 

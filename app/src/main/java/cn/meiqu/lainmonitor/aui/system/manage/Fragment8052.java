@@ -50,6 +50,7 @@ public class Fragment8052 extends FragmentAlert implements Recycle80Adapter.OnIt
     public RecyclerView.Adapter getAdapter() {
         adapter = new Recycle80Adapter(getActivity(), Device80s);
         adapter.setOnItemClickListner(this);
+        adapter.setHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.layout_8060_top,null));
         return adapter;
     }
 
@@ -60,7 +61,8 @@ public class Fragment8052 extends FragmentAlert implements Recycle80Adapter.OnIt
         requestDevices();
         viewGBody.getChildAt(0).setVisibility(View.GONE);
         mFab.setVisibility(View.VISIBLE);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_8060_top, null);
+
+        return LayoutInflater.from(getActivity()).inflate(R.layout.layout_8060_top1, null);
     }
 
     @Override

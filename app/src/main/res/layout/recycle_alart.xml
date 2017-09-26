@@ -8,8 +8,9 @@
     android:paddingTop="4dp">
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_name"
-        android:layout_width="32dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -64,8 +65,9 @@
     </LinearLayout>
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_emailStatus"
-        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -79,8 +81,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_smsStatus"
-        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -94,8 +97,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_soundStatus"
-        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -109,8 +113,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_phoneStatus"
-        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -124,8 +129,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_interval"
-        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"
@@ -138,8 +144,9 @@
         android:textSize="8dp" />
 
     <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:id="@+id/tv_edt"
-        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="6dp"

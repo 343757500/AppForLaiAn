@@ -1,36 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#1d2635"
     android:orientation="horizontal"
-    android:visibility="gone">
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp"
+    >
+
 
     <TextView
         android:id="@+id/tv_addr"
-        android:layout_width="60dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="6dp"
         android:singleLine="true"
         android:text="设备位置"
         android:textColor="@color/white"
-        android:textSize="8dp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="60dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="6dp"
         android:singleLine="true"
         android:text="设备名称"
         android:textColor="@color/white"
-        android:textSize="8dp" />
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_gallery"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="6dp"
+        android:singleLine="true"
+        android:text="设备通道"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_info"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
@@ -38,16 +56,19 @@
         android:singleLine="true"
         android:text="报警信息"
         android:textColor="@color/white"
-        android:textSize="8dp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_time"
-        android:layout_width="100dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="6dp"
         android:singleLine="true"
         android:text="报警时间"
         android:textColor="@color/white"
-        android:textSize="8dp" />
+        android:textSize="12sp" />
+
+
 </LinearLayout>

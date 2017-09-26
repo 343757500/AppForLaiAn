@@ -2,14 +2,18 @@ package cn.meiqu.lainmonitor.aui;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
@@ -22,13 +26,15 @@ import cn.meiqu.baseproject.util.LogUtil;
 import cn.meiqu.baseproject.util.TimeUtil;
 import cn.meiqu.baseproject.view.superrecyclerview.SuperRecyclerView;
 import cn.meiqu.lainmonitor.R;
+import cn.meiqu.lainmonitor.view.NewHorizontalScrollView;
+import cn.meiqu.lainmonitor.view.NoSuperRecycleView;
 
 /**
  * Created by Fatel on 16-5-25.
  */
 public abstract class FragmentAlert extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
     public String className = getClass().getName() + Math.random() * 10000;
-    public SuperRecyclerView mRecycleV;
+    public NoSuperRecycleView mRecycleV;
     public FloatingActionButton mFab;
     public ViewGroup viewGBody;
 
@@ -59,6 +65,7 @@ public abstract class FragmentAlert extends BaseFragment implements SwipeRefresh
     private EditText mTvEnd;
     private EditText mTvRange;
     private EditText mTvDevice;
+    private NewHorizontalScrollView newHorizontalScrollView;
     String timeRange[] = {"当天", "本周", "本月", "今年"};
     int currentTimeRange = 3;
 
@@ -80,14 +87,15 @@ public abstract class FragmentAlert extends BaseFragment implements SwipeRefresh
         mFab = (FloatingActionButton) findViewById(R.id.fab);
         mFab.setOnClickListener(this);
         //
+        newHorizontalScrollView = (NewHorizontalScrollView) findViewById(R.id.scroll_view);
+
         viewGBody = (ViewGroup) findViewById(R.id.lin_top);
         viewGBody.addView(getTopView(), 1);
-        mRecycleV = (SuperRecyclerView) findViewById(R.id.recycleV);
+        mRecycleV = (NoSuperRecycleView) findViewById(R.id.recycleV);
         mRecycleV.setRefreshListener(this);
         mRecycleV.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecycleV.setOnMoreListener(null);
         mRecycleV.setAdapter(getAdapter());
-        //
 
     }
 

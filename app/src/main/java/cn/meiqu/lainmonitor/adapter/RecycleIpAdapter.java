@@ -18,6 +18,48 @@ public class RecycleIpAdapter extends BaseRecycleAdapter {
     private Context mContent;
     private ArrayList<Ip> Ips;
 
+
+
+    private View mHeaderView;
+
+
+    public static final int TYPE_HEADER = 0;
+    public static final int TYPE_NORMAL = 1;
+
+
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mHeaderView == null) return TYPE_NORMAL;
+        if(position == 0) return TYPE_HEADER;
+        return TYPE_NORMAL;
+    }
+
+
+
+    public void setHeaderView(View headerView) {
+        mHeaderView = headerView;
+        notifyItemInserted(0);
+    }
+
+    public View getHeaderView() {
+        return mHeaderView;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public interface OnItemClickListner {
         public void onItemStatus(int position);
 
@@ -45,25 +87,37 @@ public class RecycleIpAdapter extends BaseRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(View.inflate(mContent, R.layout.recycle_ip, null));
+
+        if(mHeaderView != null && viewType == TYPE_HEADER) {
+            return new Holder(mHeaderView);
+        }else {
+            return new Holder(View.inflate(mContent, R.layout.recycle_ip, null));
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((Holder) holder).instanceView(position);
+
+        if (getItemViewType(position)==TYPE_HEADER){
+            return;
+        }
+        int  pos = getRealPosition(holder);
+        ((Holder) holder).instanceView(pos);
+
+    }
+
+    public int getRealPosition(RecyclerView.ViewHolder holder) {
+        int position = holder.getLayoutPosition();
+        return mHeaderView == null ? position : position - 1;
     }
 
     @Override
     public int getItemCount() {
-        return Ips.size();
+
+        return mHeaderView == null ? Ips.size() : Ips.size() + 1;
     }
 
     class Holder extends BaseHolder implements View.OnClickListener {
-        public Holder(View itemView) {
-            super(itemView);
-            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
-
         private TextView mTvName;
         private TextView mTvIp;
         private TextView mTvPort;
@@ -71,8 +125,12 @@ public class RecycleIpAdapter extends BaseRecycleAdapter {
         private TextView mTvAction;
         private TextView mTvEdt;
         private TextView mTvDel;
-
-        public void assignViews() {
+        public Holder(View itemView) {
+            super(itemView);
+            itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            if (itemView==mHeaderView){
+                return;
+            }
             mTvName = (TextView) findViewById(R.id.tv_name);
             mTvIp = (TextView) findViewById(R.id.tv_ip);
             mTvPort = (TextView) findViewById(R.id.tv_port);
@@ -88,6 +146,12 @@ public class RecycleIpAdapter extends BaseRecycleAdapter {
             mTvAction.setOnClickListener(this);
             mTvEdt.setOnClickListener(this);
             mTvDel.setOnClickListener(this);
+        }
+
+
+
+        public void assignViews() {
+
         }
 
 
@@ -124,11 +188,11 @@ public class RecycleIpAdapter extends BaseRecycleAdapter {
         public void onClick(View v) {
             if (getOnItemClickListner() != null) {
                 if (v.getId() == mTvAction.getId()) {
-                    getOnItemClickListner().onItemStatus(getPosition());
+                    getOnItemClickListner().onItemStatus(getPosition()-1);
                 } else if (v.getId() == mTvEdt.getId()) {
-                    getOnItemClickListner().onItemEdit(getPosition());
+                    getOnItemClickListner().onItemEdit(getPosition()-1);
                 } else if (v.getId() == mTvDel.getId()) {
-                    getOnItemClickListner().onItemDel(getPosition());
+                    getOnItemClickListner().onItemDel(getPosition()-1);
                 }
             }
         }

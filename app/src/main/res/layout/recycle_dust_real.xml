@@ -43,6 +43,7 @@
                 android:gravity="center"
                 android:padding="2dp"
                 android:textColor="@color/textcolor"
+                android:singleLine="true"
                 android:textSize="16dp" />
         </LinearLayout>
 
@@ -57,15 +58,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="实时值:"
+
                 android:textColor="@color/white"
                 android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tv_wet"
                 android:layout_width="64dp"
+                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="2dp"
                 android:textColor="@color/textcolor"
                 android:textSize="16dp" />
         </LinearLayout>

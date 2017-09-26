@@ -1,4 +1,4 @@
-package cn.meiqu.lainmonitor.aui.operation;
+package cn.meiqu.lainmonitor.aui.env.conditoning;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import cn.meiqu.lainmonitor.R;
 import cn.meiqu.lainmonitor.aui.operation.server.FragmentServer;
 
@@ -15,7 +16,7 @@ import cn.meiqu.lainmonitor.aui.operation.server.FragmentServer;
  * Created by Fatel on 16-5-24.
  *
  */
-public class FragmentOper extends Fragment {
+public class FragmentConditonong extends Fragment {
 
     public static String number1 = "";
     public static String number2 = "";
