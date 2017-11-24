@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.httpGet.HttpGetController;
 import cn.meiqu.baseproject.util.StringUtil;
+import cn.meiqu.baseproject.util.ToastUtil;
 import cn.meiqu.lainmonitor.R;
 import cn.meiqu.lainmonitor.adapter.RecycleNoiseManageAdapter;
 import cn.meiqu.lainmonitor.adapter.RecycleTempManageAdapter;
@@ -26,6 +27,7 @@ import cn.meiqu.lainmonitor.aui.FragmentAlert;
 import cn.meiqu.lainmonitor.bean.Ip;
 import cn.meiqu.lainmonitor.bean.Location;
 import cn.meiqu.lainmonitor.bean.NoiseList;
+import cn.meiqu.lainmonitor.bean.NoiseLists;
 import cn.meiqu.lainmonitor.bean.TempReal;
 
 import static cn.meiqu.lainmonitor.aui.FragmentControl.number2;
@@ -139,6 +141,7 @@ public class FragmentNoiseManage extends FragmentAlert implements RecycleNoiseMa
         if (getHttpStatus(data)) {
             if (action.equals(action_add) || action.equals(action_del) || action.equals(action_edt)) {
                 handleEdt(data);
+                ToastUtil.show(getContext(),data);
             } else if (action.equals(action_getLocation)) {
                 handleLocations(data);
             } else if (action.equals(action_getIP)) {

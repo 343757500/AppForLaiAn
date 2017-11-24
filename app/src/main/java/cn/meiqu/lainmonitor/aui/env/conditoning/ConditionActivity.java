@@ -102,8 +102,7 @@ public class ConditionActivity extends BaseActivity {
 
     @Override
     public void onHttpHandle(String action, String data) {
-        Log.e("hei",data);
-        if (action.equals(action_getHomePage)) {
+        if (action.equals(action_getHomePage)&&data!=null) {
             handleData(data);
         }
     }
@@ -114,6 +113,37 @@ public class ConditionActivity extends BaseActivity {
 
 
         tv1.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv2.setText(cinditionbean.getParameterPojo().getElementFinT1());
+        tv3.setText(cinditionbean.getParameterPojo().getElementFinT2());
+        tv4.setText(cinditionbean.getParameterPojo().getElementFinT3());
+        tv5.setText(cinditionbean.getParameterPojo().getElementFinT4());
+        tv6.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv7.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv8.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv9.setText(cinditionbean.getParameterPojo().getFaultNumber());
+        tv10.setText(cinditionbean.getParameterPojo().getCompressorNumber());
+        tv11.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv12.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv13.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv14.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv15.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv16.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv17.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv18.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv19.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv20.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv21.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv22.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv23.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv24.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv25.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv26.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv27.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv28.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv29.setText(cinditionbean.getParameterPojo().getIzumiT());
+        tv30.setText(cinditionbean.getParameterPojo().getIzumiT());
+
+
 
     }
 

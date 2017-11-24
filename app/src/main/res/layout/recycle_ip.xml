@@ -69,6 +69,7 @@
         android:textSize="8dp" />
 
     <TextView
+        android:background="@drawable/shape_tvbuton"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:id="@+id/tv_action"
@@ -91,6 +92,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:background="@drawable/shape_tvbuton"
             android:id="@+id/tv_edt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +105,7 @@
             android:textSize="8dp" />
 
         <TextView
+            android:background="@drawable/shape_tvbuton"
             android:id="@+id/tv_del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

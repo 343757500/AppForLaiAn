@@ -16,6 +16,7 @@ import cn.meiqu.lainmonitor.R;
 import cn.meiqu.lainmonitor.adapter.RecycleTempAlertAdapter;
 import cn.meiqu.lainmonitor.aui.FragmentAlert;
 import cn.meiqu.lainmonitor.aui.FragmentControl;
+import cn.meiqu.lainmonitor.bean.Abv;
 import cn.meiqu.lainmonitor.bean.TempAlart;
 import cn.meiqu.lainmonitor.bean.TempReal;
 
@@ -61,7 +62,7 @@ public class FragmentTempAlert extends FragmentAlert implements BaseOnRecycleCli
 
     @Override
     public String[] getDeviceNames() {
-        ArrayList<TempReal> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
+        ArrayList<Abv> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
         String names[] = new String[tempReals.size() + 1];
         for (int i = 1; i < names.length; i++) {
             names[i] = tempReals.get(i - 1).getEhmName();
@@ -71,7 +72,7 @@ public class FragmentTempAlert extends FragmentAlert implements BaseOnRecycleCli
 
     @Override
     public String getDeviceId(int position) {
-        ArrayList<TempReal> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
+        ArrayList<Abv> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
         return tempReals.get(position - 1).getEhmId() + "";
     }
 

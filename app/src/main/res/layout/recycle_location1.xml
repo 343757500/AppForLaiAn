@@ -46,52 +46,38 @@
         <LinearLayout
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <cn.meiqu.baseproject.view.RippleView
-        android:id="@+id/ripple_edt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
 
         <TextView
-            android:id="@+id/tv_edt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:gravity="center"
             android:paddingBottom="6dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
             android:paddingTop="6dp"
+            android:id="@+id/tv_edt"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
             android:singleLine="true"
             android:text="修改"
             android:textColor="@color/white"
-            android:textSize="12sp" />
-    </cn.meiqu.baseproject.view.RippleView>
+            android:textSize="12sp"  />
 
-    <cn.meiqu.baseproject.view.RippleView
-        android:id="@+id/ripple_del"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
 
         <TextView
             android:id="@+id/tv_del"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:gravity="center"
-            android:paddingBottom="6dp"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-            android:paddingTop="6dp"
+            android:padding="6dp"
             android:singleLine="true"
             android:text="删除"
             android:textColor="@color/white"
             android:textSize="12sp" />
-    </cn.meiqu.baseproject.view.RippleView>
-
         </LinearLayout>
 
     </LinearLayout>

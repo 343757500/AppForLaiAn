@@ -170,34 +170,39 @@ public class RecycleAlartAdapter extends BaseRecycleAdapter {
             mTvTime2.setText("" + alart.getTimeQuantum2());
             mTvTime3.setText("" + alart.getTimeQuantum3());
             mTvInterval.setText("" + alart.getIntervalTime());
-            mTvEdt.setBackgroundColor(mTvName.getResources().getColor(R.color.colorAccent));
+            //mTvEdt.setBackgroundColor(mTvName.getResources().getColor(R.color.colorAccent));
+            mTvEdt.setBackgroundResource(R.drawable.shape_tvbuton);
             if (alart.getEMailStatus() == 0) {
                 mTvEmailStatus.setText("已关闭");
-                mTvEmailStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                //mTvEmailStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                mTvEmailStatus.setBackgroundResource(R.drawable.shape_tvbuton1);
             } else {
                 mTvEmailStatus.setText("已开启");
-                mTvEmailStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.colorPrimary));
+                mTvEmailStatus.setBackgroundResource(R.drawable.shape_tvbuton);
             }
             if (alart.getSmsStatus() == 0) {
                 mTvSmsStatus.setText("已关闭");
-                mTvSmsStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                //mTvSmsStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                mTvSmsStatus.setBackgroundResource(R.drawable.shape_tvbuton1);
             } else {
                 mTvSmsStatus.setText("已开启");
-                mTvSmsStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.colorPrimary));
+                mTvSmsStatus.setBackgroundResource(R.drawable.shape_tvbuton);
             }
             if (alart.getSoundLightStatus() == 0) {
                 mTvSoundStatus.setText("已关闭");
-                mTvSoundStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                //mTvSoundStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                mTvSoundStatus.setBackgroundResource(R.drawable.shape_tvbuton1);
             } else {
                 mTvSoundStatus.setText("已开启");
-                mTvSoundStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.colorPrimary));
+                mTvSoundStatus.setBackgroundResource(R.drawable.shape_tvbuton);
             }
             if (alart.getPhoneStatus() == 0) {
                 mTvPhoneStatus.setText("已关闭");
-                mTvPhoneStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+               // mTvPhoneStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.black3));
+                mTvPhoneStatus.setBackgroundResource(R.drawable.shape_tvbuton1);
             } else {
                 mTvPhoneStatus.setText("已开启");
-                mTvPhoneStatus.setBackgroundColor(mTvName.getResources().getColor(R.color.colorPrimary));
+                mTvPhoneStatus.setBackgroundResource(R.drawable.shape_tvbuton);
             }
         }
 

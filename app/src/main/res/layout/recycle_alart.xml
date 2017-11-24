@@ -65,6 +65,7 @@
     </LinearLayout>
 
     <TextView
+        android:background="@drawable/shape_tvbuton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:id="@+id/tv_emailStatus"
@@ -81,6 +82,7 @@
         android:textSize="8dp" />
 
     <TextView
+        android:background="@drawable/shape_tvbuton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:id="@+id/tv_smsStatus"
@@ -97,6 +99,7 @@
         android:textSize="8dp" />
 
     <TextView
+        android:background="@drawable/shape_tvbuton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:id="@+id/tv_soundStatus"
@@ -113,6 +116,7 @@
         android:textSize="8dp" />
 
     <TextView
+        android:background="@drawable/shape_tvbuton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:id="@+id/tv_phoneStatus"
@@ -144,6 +148,7 @@
         android:textSize="8dp" />
 
     <TextView
+        android:background="@drawable/shape_tvbuton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:id="@+id/tv_edt"

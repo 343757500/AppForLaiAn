@@ -25,25 +25,6 @@ public class RecycleHomeAdapter extends BaseRecycleAdapter {
     private Context mContent;
     private ArrayList<HomePage> homePages;
     private ImageView imageView;
-    private int[] icons = new int[] {
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24,
-            R.mipmap.pic24
-    };
 
     public RecycleHomeAdapter(Context mContent, ArrayList<HomePage> homePages) {
         this.mContent = mContent;

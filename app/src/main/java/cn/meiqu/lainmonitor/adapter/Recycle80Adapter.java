@@ -135,8 +135,8 @@ public class Recycle80Adapter extends BaseRecycleAdapter {
             mTvDeviceName.setTextColor(mTvAddr.getResources().getColor(R.color.black3));
             mTvName.setTextColor(mTvAddr.getResources().getColor(R.color.black3));
             mTvIp.setTextColor(mTvAddr.getResources().getColor(R.color.black3));
-            mTvEdt.setBackgroundColor(mTvName.getResources().getColor(R.color.colorPrimary));
-            mTvDel.setBackgroundColor(mTvName.getResources().getColor(R.color.colorAccent));
+            /*mTvEdt.setBackgroundColor(mTvName.getResources().getColor(R.color.colorPrimary));
+            mTvDel.setBackgroundColor(mTvName.getResources().getColor(R.color.colorAccent));*/
             mTvEdt.setOnClickListener(this);
             mTvDel.setOnClickListener(this);
         }

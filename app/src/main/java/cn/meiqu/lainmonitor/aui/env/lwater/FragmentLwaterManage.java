@@ -44,6 +44,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
     ArrayList<Ip> ips = new ArrayList<>();
     RecycleLocationManageAdapter adapter;
     String[] addrs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
+    private ArrayList<Ip> temps;
 
     @Override
     public RecyclerView.Adapter getAdapter() {
@@ -102,7 +103,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
     }
 
     public void handleIps(String data) {
-        ArrayList<Ip> temps = new Gson().fromJson(data, new TypeToken<ArrayList<Ip>>() {
+        temps = new Gson().fromJson(data, new TypeToken<ArrayList<Ip>>() {
         }.getType());
         ips.clear();
         ips.addAll(temps);
@@ -268,7 +269,7 @@ public class FragmentLwaterManage extends FragmentAlert implements RecycleLocati
                     return;
                 }
                 if (position == -1) {
-                    requestAdd(addrs[currentAddr] + "", locations.get(currentLocation).getDlId() + "", "192.168.1.165:5500" + "", name);
+                    requestAdd(addrs[currentAddr] + "", locations.get(currentLocation).getDlId() + "",temps.get(currentIp).getDiId()  + "", name);
                     Log.e("hei","111");
                 } else {
                     requestEdt(locationWaters.get(position).getId() + "", name);

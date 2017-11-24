@@ -13,6 +13,7 @@ import cn.meiqu.baseproject.baseRecycle.BaseOnRecycleClickListener;
 import cn.meiqu.baseproject.baseRecycle.BaseRecycleAdapter;
 import cn.meiqu.baseproject.view.RippleView;
 import cn.meiqu.lainmonitor.R;
+import cn.meiqu.lainmonitor.bean.Abv;
 import cn.meiqu.lainmonitor.bean.TempReal;
 
 /**
@@ -21,9 +22,9 @@ import cn.meiqu.lainmonitor.bean.TempReal;
  */
 public class RecycleTempRealAdapter extends BaseRecycleAdapter {
     private Context mContent;
-    private ArrayList<TempReal> tempReals;
+    private ArrayList<Abv> tempReals;
 
-    public RecycleTempRealAdapter(Context mContent, ArrayList<TempReal> tempReals) {
+    public RecycleTempRealAdapter(Context mContent, ArrayList<Abv> tempReals) {
         this.mContent = mContent;
         this.tempReals = tempReals;
     }
@@ -70,7 +71,7 @@ public class RecycleTempRealAdapter extends BaseRecycleAdapter {
 
         @Override
         public void instanceView(final int position) {
-            TempReal tempReal = tempReals.get(position);
+            Abv tempReal = tempReals.get(position);
             mTvName.setText(tempReal.getEhmName() + "");
             mTvTemp.setText(tempReal.getEhmTemp() + "℃");
             mTvWet.setText(tempReal.getEhmHum() + "%");

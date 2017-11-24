@@ -4,58 +4,58 @@ package cn.meiqu.lainmonitor.bean;
  * Created by Fatel on 16-6-2.
  */
 public class TempHistroy {
-    private double ehmHum;
-    private int ehmId;
-    private double ehmTemp;
-    private String ehmName;
-    private String ehmTime;
 
-    public TempHistroy() {
+    /**
+     * ehhHum : 9
+     * ehhId : 1
+     * ehhName : 1号温湿度
+     * ehhTemp : 20
+     * ehhTime : 2017-10-17 10:23
+     */
+
+    private double ehhHum;
+    private int ehhId;
+    private String ehhName;
+    private double ehhTemp;
+    private String ehhTime;
+
+    public double getEhhHum() {
+        return ehhHum;
     }
 
-    public TempHistroy(String ehmTime, double ehmTemp, double ehmHum) {
-        this.ehmHum = ehmHum;
-        this.ehmTemp = ehmTemp;
-        this.ehmTime = ehmTime;
+    public void setEhhHum(int ehhHum) {
+        this.ehhHum = ehhHum;
     }
 
-    public double getEhmHum() {
-        return ehmHum;
+    public int getEhhId() {
+        return ehhId;
     }
 
-    public void setEhmHum(double ehmHum) {
-        this.ehmHum = ehmHum;
+    public void setEhhId(int ehhId) {
+        this.ehhId = ehhId;
     }
 
-    public String getEhmName() {
-        return ehmName;
+    public String getEhhName() {
+        return ehhName;
     }
 
-    public void setEhmName(String ehmName) {
-        this.ehmName = ehmName;
+    public void setEhhName(String ehhName) {
+        this.ehhName = ehhName;
     }
 
-    public double getEhmTemp() {
-        return ehmTemp;
+    public double getEhhTemp() {
+        return ehhTemp;
     }
 
-    public void setEhmTemp(double ehmTemp) {
-        this.ehmTemp = ehmTemp;
+    public void setEhhTemp(int ehhTemp) {
+        this.ehhTemp = ehhTemp;
     }
 
-    public int getEhmId() {
-        return ehmId;
+    public String getEhhTime() {
+        return ehhTime;
     }
 
-    public void setEhmId(int ehmId) {
-        this.ehmId = ehmId;
-    }
-
-    public String getEhmTime() {
-        return ehmTime;
-    }
-
-    public void setEhmTime(String ehmTime) {
-        this.ehmTime = ehmTime;
+    public void setEhhTime(String ehhTime) {
+        this.ehhTime = ehhTime;
     }
 }

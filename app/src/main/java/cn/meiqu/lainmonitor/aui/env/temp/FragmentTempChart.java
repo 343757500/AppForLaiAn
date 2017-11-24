@@ -26,9 +26,9 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import cn.meiqu.baseproject.API;
@@ -38,6 +38,7 @@ import cn.meiqu.baseproject.util.LogUtil;
 import cn.meiqu.baseproject.util.TimeUtil;
 import cn.meiqu.lainmonitor.R;
 import cn.meiqu.lainmonitor.aui.FragmentControl;
+import cn.meiqu.lainmonitor.bean.Abv;
 import cn.meiqu.lainmonitor.bean.TempHistroy;
 import cn.meiqu.lainmonitor.bean.TempReal;
 
@@ -51,7 +52,7 @@ public class FragmentTempChart extends BaseFragment implements View.OnClickListe
     String end = "";
     long startStamp = 0;
     long endStamp = 0;
-    String deviceId = "1";
+    String deviceId = "0";
     private EditText mTvStart;
     private EditText mTvEnd;
     private EditText mTvRange;
@@ -180,21 +181,21 @@ public class FragmentTempChart extends BaseFragment implements View.OnClickListe
             if (i > 100) {
                 break;
             }
-            xVals.add((tempHistroys.get(i).getEhmTime()) + "");
+            xVals.add((tempHistroys.get(i).getEhhTime()) + "");
         }
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
         for (int i = 0; i < tempHistroys.size(); i++) {
             if (i > 100) {
                 break;
             }
-            yVals1.add(new Entry((float) tempHistroys.get(i).getEhmTemp(), i));
+            yVals1.add(new Entry((float) tempHistroys.get(i).getEhhTemp(), i));
         }
         ArrayList<Entry> yVals2 = new ArrayList<Entry>();
         for (int i = 0; i < tempHistroys.size(); i++) {
             if (i > 100) {
                 break;
             }
-            yVals2.add(new Entry((float) tempHistroys.get(i).getEhmHum(), i));
+            yVals2.add(new Entry((float) tempHistroys.get(i).getEhhHum(), i));
         }
         LineDataSet set1, set2;
 //        if (mChart.getData() != null &&
@@ -274,15 +275,21 @@ public class FragmentTempChart extends BaseFragment implements View.OnClickListe
     }
 
     public void handleData(String data) {
-        ArrayList<TempHistroy> temps = new Gson().fromJson(data, new TypeToken<ArrayList<TempHistroy>>() {
-        }.getType());
+      /*  ArrayList<TempHistroy> temps = new Gson().fromJson(data, new TypeToken<ArrayList<TempHistroy>>() {
+        }.getType());*/
+
+
         tempHistroys.clear();
-        tempHistroys.addAll(temps);
-//        for (int i = 0; i < 10; i++) {
-//            tempHistroys.add(new TempHistroy("2015-09-08 12:35:00", tempHistroys.size() + 3, tempHistroys.size() + 5));
-//        }
+        TempHistroy[] tempHistroys = new Gson().fromJson(data, TempHistroy[].class);
+       // this.tempHistroys.addAll(Arrays.asList(tempHistroys));
+        for (int i = 0; i < tempHistroys.length; i++) {
+            this.tempHistroys.add(tempHistroys[i]);
+       }
+
         refreshChart();
     }
+
+
 
     @Override
     public void onHttpHandle(String action, String data) {
@@ -404,7 +411,7 @@ public class FragmentTempChart extends BaseFragment implements View.OnClickListe
     }
 
     public String[] getDeviceNames() {
-        ArrayList<TempReal> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
+        ArrayList<Abv> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
         String names[] = new String[tempReals.size()];
         for (int i = 0; i < names.length; i++) {
             names[i] = tempReals.get(i).getEhmName();
@@ -413,7 +420,7 @@ public class FragmentTempChart extends BaseFragment implements View.OnClickListe
     }
 
     public String getDeviceId(int position) {
-        ArrayList<TempReal> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
+        ArrayList<Abv> tempReals = ((FragmentTempReal) ((FragmentControl) getParentFragment()).fragments.get(0)).tempReals;
         return tempReals.get(position).getEhmId() + "";
     }
 

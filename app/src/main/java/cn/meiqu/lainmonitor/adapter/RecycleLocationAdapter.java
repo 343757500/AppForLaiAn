@@ -50,9 +50,6 @@ public class RecycleLocationAdapter extends BaseRecycleAdapter {
 
 
 
-
-
-
     public interface OnItemClickListner {
         public void onItemEdt(int position);
 
@@ -105,12 +102,12 @@ public class RecycleLocationAdapter extends BaseRecycleAdapter {
         return mHeaderView == null ? Locations.size() : Locations.size() + 1;
     }
 
-    class Holder extends BaseHolder implements RippleView.OnRippleCompleteListener {
+    class Holder extends BaseHolder implements  View.OnClickListener {
         private TextView mTvId;
         private TextView mTvName;
-        private RippleView mRippleEdt;
+        private TextView mRippleEdt;
         private TextView mTvEdt;
-        private RippleView mRippleDel;
+      //  private TextView mRippleDel;
         private TextView mTvDel;
         public Holder(View itemView) {
             super(itemView);
@@ -120,18 +117,19 @@ public class RecycleLocationAdapter extends BaseRecycleAdapter {
             }
             mTvId = (TextView) findViewById(R.id.tv_id);
             mTvName = (TextView) findViewById(R.id.tv_name);
-            mRippleEdt = (RippleView) findViewById(R.id.ripple_edt);
+            //mRippleEdt = (TextView) findViewById(R.id.ripple_edt);
             mTvEdt = (TextView) findViewById(R.id.tv_edt);
-            mRippleDel = (RippleView) findViewById(R.id.ripple_del);
+           // mRippleDel = (TextView) findViewById(R.id.ripple_del);
             mTvDel = (TextView) findViewById(R.id.tv_del);
 
             mTvId.setTextColor(mTvId.getResources().getColor(R.color.black3));
             mTvName.setTextColor(mTvId.getResources().getColor(R.color.black3));
-            mTvEdt.setBackgroundColor(mTvId.getResources().getColor(R.color.colorPrimary));
-            mTvDel.setBackgroundColor(mTvId.getResources().getColor(R.color.colorAccent));
-            mRippleEdt.setOnRippleCompleteListener(this);
-            mRippleDel.setOnRippleCompleteListener(this);
-
+           /* mTvEdt.setBackgroundColor(mTvId.getResources().getColor(R.color.colorPrimary));
+            mTvDel.setBackgroundColor(mTvId.getResources().getColor(R.color.colorAccent));*/
+            /*mRippleEdt.setOnRippleCompleteListener(this);
+            mRippleDel.setOnRippleCompleteListener(this);*/
+            mTvEdt.setOnClickListener(this);
+            mTvDel.setOnClickListener(this);
         }
 
 
@@ -156,12 +154,14 @@ public class RecycleLocationAdapter extends BaseRecycleAdapter {
         }
 
 
+
+
         @Override
-        public void onComplete(RippleView v) {
+        public void onClick(View v) {
             if (getOnItemClickListner() != null) {
-                if (v.getId() == mRippleDel.getId()) {
+                if (v.getId() == mTvEdt.getId()) {
                     getOnItemClickListner().onItemDel(getPosition()-1);
-                } else if (v.getId() == mRippleEdt.getId()) {
+                } else if (v.getId() == mTvDel.getId()) {
                     getOnItemClickListner().onItemEdt(getPosition()-1);
                 }
             }

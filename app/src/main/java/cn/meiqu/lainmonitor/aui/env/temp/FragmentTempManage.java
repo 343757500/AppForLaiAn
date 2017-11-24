@@ -289,6 +289,7 @@ public class FragmentTempManage extends FragmentAlert implements RecycleTempMana
                             return;
                         }
                     }
+
                         requestAdd(addrs[currentAddr] + "", locations.get(currentTemp).getDlId() + "",ips.get(currentIp).getDiId()+"", name, mEdtMaxTemp.getText().toString(), mEdtMinTemp.getText().toString(), mEdtMaxHum.getText().toString(), mEdtMinHum.getText().toString(), mEdtInterval.getText().toString());
 
 

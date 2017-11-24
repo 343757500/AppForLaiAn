@@ -111,7 +111,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/black3"
-                    android:textColorHint="@color/white1"
+                    android:textColorHint="@color/black9"
                     android:paddingLeft="14dp"
                     android:textSize="13dp" />
             </LinearLayout>

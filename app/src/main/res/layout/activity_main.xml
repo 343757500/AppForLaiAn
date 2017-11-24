@@ -20,11 +20,13 @@
         android:layout_height="wrap_content">
 
     <cn.meiqu.lainmonitor.view.NoScrollViewPager
-        android:layout_marginBottom="50dp"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_mine">
+        android:background="@color/color_mine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     </cn.meiqu.lainmonitor.view.NoScrollViewPager>
 
 

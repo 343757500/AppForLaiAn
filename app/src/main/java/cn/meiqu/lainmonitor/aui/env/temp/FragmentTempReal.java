@@ -11,6 +11,7 @@ import cn.meiqu.baseproject.API;
 import cn.meiqu.baseproject.httpGet.HttpGetController;
 import cn.meiqu.lainmonitor.adapter.RecycleTempRealAdapter;
 import cn.meiqu.lainmonitor.aui.FragmentReal;
+import cn.meiqu.lainmonitor.bean.Abv;
 import cn.meiqu.lainmonitor.bean.TempReal;
 
 /**
@@ -18,7 +19,7 @@ import cn.meiqu.lainmonitor.bean.TempReal;
  */
 public class FragmentTempReal extends FragmentReal {
     String action_getData = className + API.getTempReal;
-    public ArrayList<TempReal> tempReals = new ArrayList<>();
+    public ArrayList<Abv> tempReals = new ArrayList<>();
     RecycleTempRealAdapter adapter;
 
     @Override
@@ -37,7 +38,7 @@ public class FragmentTempReal extends FragmentReal {
     }
 
     public void handleData(String data) {
-        ArrayList<TempReal> temps = new Gson().fromJson(data, new TypeToken<ArrayList<TempReal>>() {
+        ArrayList<Abv> temps = new Gson().fromJson(data, new TypeToken<ArrayList<Abv>>() {
         }.getType());
         if (!temps.isEmpty()) {
             tempReals.clear();
